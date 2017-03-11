@@ -58,6 +58,9 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({ options: { postcss: [ autoprefixer ] }}),
     new ExtractTextPlugin('styles.css'),
+    new webpack.ProvidePlugin({
+            jQuery: "jquery"
+        })
   ],
   devtool: 'source-map'
 };

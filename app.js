@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/materialize', express.static(__dirname + '/node_modules/materialize-css/dist/js/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/materialize-css/node_modules/jquery/dist/'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(require('express-session')({
   secret: process.env.SESSION_SECRET || 'secret',

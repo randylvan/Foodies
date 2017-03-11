@@ -60,9 +60,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav>
-          <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">Logo</a>
+        <nav className="container-fluid">
+          <div className="nav-wrapper nav-bar">
+            <a href="#!" className="brand-logo"></a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               { this.links() }
