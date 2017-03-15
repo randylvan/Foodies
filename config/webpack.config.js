@@ -44,7 +44,7 @@ module.exports = {
             query: {
               modules: true,
               importLoaders: true,
-              localIdentName: '[local]___[hash:base64:5]'
+              
             }
           },
           { loader: "sass-loader" },
