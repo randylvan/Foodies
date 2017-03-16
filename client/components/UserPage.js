@@ -1,6 +1,11 @@
 import React from 'react';
 
 class UserPage extends React.Component{
+    
+    componentsDidMount(){
+        
+    }
+
     render() {
 
         return(
