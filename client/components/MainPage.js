@@ -4,7 +4,7 @@ import LandingPage from './LandingPage';
 
 class MainPage extends React.Component{
     
-    state = {toggle: true }
+    state = {toggle: false }
 
     render(){
         return(
