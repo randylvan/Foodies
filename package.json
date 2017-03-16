@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "dev_server": "webpack-dev-server --progress --config config/webpack.config.js",
     "build": "webpack --config config/webpack.config.js",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "seed": "node ./models/seed.js" 
   },
   "dependencies": {
     "autoprefixer": "^6.7.6",
@@ -30,6 +31,7 @@
     "json-loader": "^0.5.4",
     "materialize-css": "^0.98.0",
     "mongoose": "^4.8.3",
+    "mongoose-seed": "^0.3.1",
     "morgan": "~1.7.0",
     "node-sass": "^4.5.0",
     "passport": "^0.3.2",
