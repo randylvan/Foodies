@@ -25,19 +25,27 @@ class Auth extends React.Component {
     });
   }
 
+  info = () => {
+    return(
+      <div>
+        <input type="tel"  ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
+        <input type="text" pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
+      </div>
+    )
+  }  
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col s12 l6">
-          <h2 className="center">{this.props.route.title}</h2>
+           <h2 className="center">{this.props.route.title}</h2>
             <form onSubmit={this.handleSubmit}>
               <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
               <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
-              <input type="tel" required={true} ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
-              <input type="text" required={true} pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
-            <button className="btn">{this.props.route.title}</button>
-          </form>
+              {this.props.route.title === "Sign Up" ? this.info() : null }
+              <button className="btn">{this.props.route.title}</button>
+            </form>
           </div>
           <div className="col s12 l6">
             <h3>Categories</h3>
