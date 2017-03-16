@@ -6,12 +6,17 @@ import { setFlash } from '../actions/flash';
 class Auth extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    let { email, password, props: { location, dispatch, router }} = this;
+    let { email, password, phoneNumber, zipCode, props: { location, dispatch, router }} = this;
 
     $.ajax({
       url: `/api/auth/${location.pathname}`,
       type: 'POST',
-      data: { email: email.value, password: password.value }
+      data: { 
+        email: email.value, 
+        password: password.value,
+        phoneNumber: phoneNumber.value,
+        zipCode: zipCode.value,
+      }
     }).done( user => {
       dispatch(refreshLogin(user));
       router.push("/")
@@ -22,13 +27,22 @@ class Auth extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2 className="center">{this.props.route.title}</h2>
-          <form onSubmit={this.handleSubmit}>
-            <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
-            <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
-           <button className="btn">{this.props.route.title}</button>
-         </form>
+      <div className="container">
+        <div className="row">
+          <div className="col s12 l6">
+          <h2 className="center">{this.props.route.title}</h2>
+            <form onSubmit={this.handleSubmit}>
+              <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
+              <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
+              <input type="tel" required={true} ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
+              <input type="text" required={true} pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
+            <button className="btn">{this.props.route.title}</button>
+          </form>
+          </div>
+          <div className="col s12 l6">
+            <h3>Categories</h3>
+          </div>
+        </div>
       </div>
     )
   }

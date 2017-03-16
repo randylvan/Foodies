@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 class DefaultUserProfileForm extends React.Component {
     state = {
-        showPasswordVerification: false;
+        showPasswordVerification: false
     };
 
     onPasswordChanged(e){
@@ -13,7 +13,6 @@ class DefaultUserProfileForm extends React.Component {
     }
     render(){
         return(
-            <UserProfileForm {...this.props}>
                 <div className="row">
                     <div className="col s12">
                         <div>
@@ -60,8 +59,8 @@ class DefaultUserProfileForm extends React.Component {
                         </div>
                     </div>
                 </div>
-            </UserProfileForm>
         )
     }
 }
+
 

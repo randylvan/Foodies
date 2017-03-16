@@ -1,11 +1,12 @@
-import React from 'react';  
+import React from 'react';
+import UserProfileForm from './UserProfileForm'; 
 
 class UserPage extends React.Component{
     render() {
 
         return(
-            <DocumentTitle title={`My Profile`}>
             <div className="container">
+                <h3>My Profile</h3>
                 <div className="row">
                     <div className="col s6 l12">
                         <h3>My Profile</h3>
@@ -18,7 +19,6 @@ class UserPage extends React.Component{
                     </div>
                 </div>
             </div>
-            </DocumentTitle>
         )
     }
 
