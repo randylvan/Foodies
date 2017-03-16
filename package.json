@@ -1,11 +1,12 @@
 {
-  "name": "trello-clone",
+  "name": "foodie-tinder",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "dev_server": "webpack-dev-server --progress --config config/webpack.config.js",
-    "build": "webpack --config config/webpack.config.js"
+    "build": "webpack --config config/webpack.config.js",
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "autoprefixer": "^6.7.6",
@@ -15,8 +16,9 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
     "body-parser": "~1.16.0",
+    "bootstrap": "3",
     "cookie-parser": "~1.4.3",
-    "css-loader": "^0.26.1",
+    "css-loader": "^0.27.3",
     "debug": "~2.6.0",
     "dotenv": "^4.0.0",
     "express": "~4.14.1",

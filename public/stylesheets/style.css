@@ -2,6 +2,10 @@ a {
   color: #00B7FF;
 }
 
+body {
+  font-family:"Helvetica Neue",Helvetica,Arial !IMPORTANT;
+}
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
@@ -19,4 +23,33 @@ a {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+
+.cover-container {
+  position: absolute;
+  top: 180px;
+
+}
+
+.img {
+  background-image: url("../pizza.jpg");
+  background-repeat: none;
+  background-size: cover;
+  height: 100vh;
+   -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  margin-top: -70px;
+}
+
+nav .nav-wrapper {
+  background-color: transparent !important;
+  z-index: 9999;
+}
+
+nav {
+  background-color: transparent !important;
+  z-index: 9999;
 }
