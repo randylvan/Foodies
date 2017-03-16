@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { refreshLogin } from '../actions/auth';
 import { setFlash } from '../actions/flash';
+import Categories from './Categories';
 
 class Auth extends React.Component {
   handleSubmit = (e) => {
@@ -49,6 +50,7 @@ class Auth extends React.Component {
           </div>
           <div className="col s12 l6">
             <h3>Categories</h3>
+            <Categories />
           </div>
         </div>
       </div>

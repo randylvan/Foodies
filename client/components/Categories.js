@@ -9,7 +9,14 @@ class Categories extends React.Component{
 
         return(
             <div>
-                <h3>List of Categories goes here</h3>
+                <ul>
+                    <li><h5>Chinese</h5></li>
+                    <li><h5>American</h5></li>
+                    <li><h5>Italian</h5></li>
+                    <li><h5>French</h5></li>
+                    <li><h5>Korean</h5></li>
+                </ul>
+
             </div>
         )
     }
