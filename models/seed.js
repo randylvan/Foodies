@@ -3,12 +3,12 @@ const seeder = require('mongoose-seed');
 const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/categories' 
 seeder.connect(connectionString, () => { 
   seeder.loadModels([ 
-    'models/categories.js' 
+    'models/category.js' 
   ]); 
  
  
   console.log('Clearing Models'); 
-  seeder.clearModels(['categories'], () => { 
+  seeder.clearModels(['Category'], () => { 
     seeder.populateModels(data, () => { 
       console.log('Finished Seeding'); 
       mongoose.connection.close(); 
@@ -19,206 +19,206 @@ seeder.connect(connectionString, () => {
  
 const data = [ 
   { 
-    'model': 'categories', 
+    'model': 'Category', 
     'documents': [ 
       {
             "description": "American (New)",
-            "name": "newamerican",
+            "title": "newamerican",
             "enabled": false
         },
         {
             "description": "Mexican",
-            "name": "mexican",
+            "title": "mexican",
             "enabled": false
         },
         {
             "description": "Afghan",
-            "name": "afghani",
+            "title": "afghani",
             "enabled": false
         },
         {
             "description": "Barbeque",
-            "name": "bbq",
+            "title": "bbq",
             "enabled": false
         },
         {
             "description": "Gastropubs",
-            "name": "gastropubs",
+            "title": "gastropubs",
             "enabled": false
         },
         {
             "description": "American (Traditional)",
-            "name": "tradamerican",
+            "title": "tradamerican",
             "enabled": false
         },
         {
             "description": "Salad",
-            "name": "salad",
+            "title": "salad",
             "enabled": false
         },
         {
             "description": "Japanese",
-            "name": "japanese",
+            "title": "japanese",
             "enabled": false
         },
         {
             "description": "Asian Fusion",
-            "name": "asianfusion",
+            "title": "asianfusion",
             "enabled": false
         },
         {
             "description": "Hot Pot",
-            "name": "hotpot",
+            "title": "hotpot",
             "enabled": false
         },
         {
             "description": "Mexican",
-            "name": "mexican",
+            "title": "mexican",
             "enabled": false
         },
         {
-            "description": "Vietnamese",
-            "name": "vietnamese",
+            "description": "Viettitlese",
+            "title": "viettitlese",
             "enabled": false
         },
         {
             "description": "Vegan",
-            "name": "vegan",
+            "title": "vegan",
             "enabled": false
         },
         {
             "description": "Sandwiches",
-            "name": "sandwiches",
+            "title": "sandwiches",
             "enabled": false
         },
         {
             "description": "Italian",
-            "name": "italian",
+            "title": "italian",
             "enabled": false
         },
         {
             "description": "Wine Bars",
-            "name": "wine_bars",
+            "title": "wine_bars",
             "enabled": false
         },
         {
             "description": "Tapas/Small Plates",
-            "name": "tapasmallplates",
+            "title": "tapasmallplates",
             "enabled": false
         },
         {
             "description": "Izakaya",
-            "name": "izakaya",
+            "title": "izakaya",
             "enabled": false
         },
         {
             "description": "Cafes",
-            "name": "cafes",
+            "title": "cafes",
             "enabled": false
         },
         {
             "description": "Salad",
-            "name": "salad",
+            "title": "salad",
             "enabled": false
         },
         {
             "description": "Breakfast & Brunch",
-            "name": "breakfast_brunch",
+            "title": "breakfast_brunch",
             "enabled": false
         },
         {
             "description": "Sushi Bars",
-            "name": "sushi",
+            "title": "sushi",
             "enabled": false
         },
         {
             "description": "Ramen",
-            "name": "ramen",
+            "title": "ramen",
             "enabled": false
         },
         {
             "description": "Noodles",
-            "name": "noodles",
+            "title": "noodles",
             "enabled": false
         },
         {
             "description": "Diners",
-            "name": "diners",
+            "title": "diners",
             "enabled": false
         },
         {
             "description": "Lounges",
-            "name": "lounges",
+            "title": "lounges",
             "enabled": false
         },
         {
             "description": "Cocktail Bars",
-            "name": "cocktailbars",
+            "title": "cocktailbars",
             "enabled": false
         },
         {
             "description": "Pizza",
-            "name": "pizza",
+            "title": "pizza",
             "enabled": false
         },
         {
             "description": "Desserts",
-            "name": "desserts",
+            "title": "desserts",
             "enabled": false
         },
         {
             "description": "Breweries",
-            "name": "breweries",
+            "title": "breweries",
             "enabled": false
         },
         {
             "description": "Beer, Wine & Spirits",
-            "name": "beer_and_wine",
+            "title": "beer_and_wine",
             "enabled": false
         },
         {
             "description": "Taiwanese",
-            "name": "taiwanese",
+            "title": "taiwanese",
             "enabled": false
         },
         {
             "description": "Korean",
-            "name": "korean",
+            "title": "korean",
             "enabled": false
         },
         {
             "description": "Chinese",
-            "name": "chinese",
+            "title": "chinese",
             "enabled": false
         },
         {
             "description": "Burgers",
-            "name": "burgers",
+            "title": "burgers",
             "enabled": false
         },
         {
             "description": "Bars",
-            "name": "bars",
+            "title": "bars",
             "enabled": false
         },
         {
             "description": "Mediterranean",
-            "name": "mediterranean",
+            "title": "mediterranean",
             "enabled": false
         },
         {
             "description": "Gluten-Free",
-            "name": "gluten_free",
+            "title": "gluten_free",
             "enabled": false
         },
         {
             "description": "Vegetarian",
-            "name": "vegetarian",
+            "title": "vegetarian",
             "enabled": false
         },
         {
             "description": "Gastropubs",
-            "name": "gastropubs",
+            "title": "gastropubs",
             "enabled": false
         }
     ] 
