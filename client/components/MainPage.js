@@ -1,15 +1,15 @@
 import React from 'react';
 import UserPage from './UserPage';
-import TestingPage from './MainPage';
+import LandingPage from './LandingPage';
 
 class MainPage extends React.Component{
     
-    state = {toggle: false }
+    state = {toggle: true }
 
     render(){
         return(
             <div>
-                {this.state.toggle ? <LoadingPage/> : <UserPage/> }
+                {this.state.toggle ? <LandingPage/> : <UserPage/> }
             </div>
         )
     }
