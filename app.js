@@ -13,6 +13,7 @@ mongoose.connect(mongoURI);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const categories = require('./routes/categories')
 const app = express();
 
 // view engine setup
@@ -43,6 +44,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api/auth', auth);
+app.use('/api/categories', categories);
 
 app.use('*', index);
 
