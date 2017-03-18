@@ -4,20 +4,31 @@ import { connect } from 'react-redux';
 import { getCategories }  from '../actions/categories'
 
 class Categories extends React.Component {
+    state = { enableCard: false }
+
     componentDidMount() {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
     }
 
+    toggleEnable = () => {
+        console.log("toggle this");
+        this.setState({ enableCard: !this.state.enableCard });
+    }
 
     render () {
-        console.log("Categories: " + this.props.categories);
+        console.log(this.props.categories);
         let categoryList = this.props.categories.map( category => {
             return (
                 <li key={category._id} className="collection-item">
-                    <div className="col s12 m6">
-                        <div className="card blue darken-4">
+                    <div className="col s12 m8">
+                        <div className="card blue {category.enabled ? darken-4 : darken-2}">
                             <div className="card-content white-text">
-                                {category.description}
+                                {category.description} - {this.state.enableCard.toString()}
+                            </div>
+                            <div className="card-action white-text">
+                                <a onClick={this.toggleEnable}>
+                                    { this.state.enableCard ? 'Select' : 'Unselect' }
+                                </a>
                             </div>
                         </div>
                     </div>
