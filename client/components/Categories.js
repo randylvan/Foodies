@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { getCategories }  from '../actions/categories'
+import Category from './Category';
 
 class Categories extends React.Component {
     state = { enableCards: false }
@@ -15,24 +16,33 @@ class Categories extends React.Component {
         this.setState({ enableCards: !this.state.enableCards });
     }
 
+    updateCategory = (category) => {
+        console.log("update category here")
+        // let { _id, name } = board;
+        // $.ajax({
+        // url: `/boards/${_id}`,
+        // type: 'PUT',
+        // data: { name }
+        // }).done( board => {
+        // let boards = this.state.boards.map( b => {
+        //     if (b._id === _id)
+        //     return board
+        //     return b
+        // });
+
+        // this.setState({ boards });
+        // });
+    }
+
     render () {
         console.log(this.props.categories);
         let categoryList = this.props.categories.map( category => {
             return (
-                <li key={category._id} className="collection-item">
-                    <div className="col s12 m8">
-                        <div className="card blue {category.enabled ? darken-4 : darken-2}">
-                            <div className="card-content white-text">
-                                {category.description} - {this.state.enableCards.toString()}
-                            </div>
-                            <div className="card-action white-text">
-                                <a onClick={this.toggleEnable}>
-                                    { this.state.enableCards ? 'Select' : 'Unselect' }
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                <Category
+                    key={category._id}
+                    updateCategory={this.updateCategory}
+                    {...category} 
+                />
             )
         });
         return(
