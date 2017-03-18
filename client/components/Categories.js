@@ -14,8 +14,12 @@ class Categories extends React.Component {
         let categoryList = this.props.categories.map( category => {
             return (
                 <li key={category._id} className="collection-item">
-                    <div>
-                        {category.description}: { category.title }
+                    <div className="col s12 m6">
+                        <div className="card blue darken-4">
+                            <div className="card-content white-text">
+                                {category.description}
+                            </div>
+                        </div>
                     </div>
                 </li>
             )
