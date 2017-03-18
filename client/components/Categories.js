@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getCategories }  from '../actions/categories'
 
 class Categories extends React.Component {
-    state = { enableCard: false }
+    state = { enableCards: false }
 
     componentDidMount() {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
@@ -12,7 +12,7 @@ class Categories extends React.Component {
 
     toggleEnable = () => {
         console.log("toggle this");
-        this.setState({ enableCard: !this.state.enableCard });
+        this.setState({ enableCards: !this.state.enableCards });
     }
 
     render () {
@@ -23,11 +23,11 @@ class Categories extends React.Component {
                     <div className="col s12 m8">
                         <div className="card blue {category.enabled ? darken-4 : darken-2}">
                             <div className="card-content white-text">
-                                {category.description} - {this.state.enableCard.toString()}
+                                {category.description} - {this.state.enableCards.toString()}
                             </div>
                             <div className="card-action white-text">
                                 <a onClick={this.toggleEnable}>
-                                    { this.state.enableCard ? 'Select' : 'Unselect' }
+                                    { this.state.enableCards ? 'Select' : 'Unselect' }
                                 </a>
                             </div>
                         </div>
