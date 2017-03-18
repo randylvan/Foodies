@@ -15,7 +15,7 @@ class Categories extends React.Component {
             return (
                 <li key={category._id} className="collection-item">
                     <div>
-                        { category.title } - {category.description}
+                        {category.description}: { category.title }
                     </div>
                 </li>
             )
