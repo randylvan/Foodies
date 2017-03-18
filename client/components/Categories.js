@@ -8,8 +8,18 @@ class Categories extends React.Component {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
     }
 
+
     render () {
-        console.log(this.props.categories);
+        console.log("Categories: " + this.props.categories);
+        let noteList = this.props.categories.map( category => {
+            return (
+                <li key={category._id} className="collection-item">
+                    <div>
+                        { category.title } - {category.description} - {category.enabled}
+                    </div>
+                </li>
+            )
+        });
         return(
             <div>
                 <ul>
