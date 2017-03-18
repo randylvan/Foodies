@@ -11,11 +11,11 @@ class Categories extends React.Component {
 
     render () {
         console.log("Categories: " + this.props.categories);
-        let noteList = this.props.categories.map( category => {
+        let categoryList = this.props.categories.map( category => {
             return (
                 <li key={category._id} className="collection-item">
                     <div>
-                        { category.title } - {category.description} - {category.enabled}
+                        { category.title } - {category.description}
                     </div>
                 </li>
             )
@@ -23,12 +23,7 @@ class Categories extends React.Component {
         return(
             <div>
                 <ul>
-                    <li><h5>Chinese</h5></li>
-                    <li><h5>American</h5></li>
-                    <li><h5>Italian</h5></li>
-                    <li><h5>French</h5></li>
-                    <li><h5>Korean</h5></li>
-                    <li><h5>BBQ</h5></li>
+                    {categoryList}
                 </ul>
 
             </div>
@@ -43,3 +38,9 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(Categories);
 
 // export default Categories;
+// <li><h5>Chinese</h5></li>
+// <li><h5>American</h5></li>
+// <li><h5>Italian</h5></li>
+// <li><h5>French</h5></li>
+// <li><h5>Korean</h5></li>
+// <li><h5>BBQ</h5></li>
