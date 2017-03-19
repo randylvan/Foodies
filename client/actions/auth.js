@@ -29,3 +29,5 @@ export const logout = (router) => {
 const setUser = (user = {}) => {
   return { type: 'USER', user }
 }
+
+

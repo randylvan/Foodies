@@ -7,7 +7,7 @@ import Categories from './Categories';
 class Auth extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    let { email, password, phoneNumber, zipCode, props: { location, dispatch, router }} = this;
+    let { email, password, firstName, lastName, phoneNumber, zipCode, props: { location, dispatch, router }} = this;
 
     $.ajax({
       url: `/api/auth/${location.pathname}`,
@@ -29,6 +29,8 @@ class Auth extends React.Component {
   info = () => {
     return(
       <div>
+        <input type="text" ref={n => this.firstName = n} placeholder="First Name"/>
+        <input type="text" ref={n => this.firstname = n} placeholder="Last Name"/>
         <input type="tel"  ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
         <input type="text" pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
       </div>
