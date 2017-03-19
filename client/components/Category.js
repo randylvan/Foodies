@@ -24,10 +24,11 @@ class Category extends React.Component {
                     <li key={_id} className="collection-item">
                         <div className={'card ' + myColorHue }>
                             <div className="card-content white-text ">
-                                <div className="card-title">{description}</div>
+                                <span className="card-title">{description}</span>
+                                <p>Maybe add an extended description in the database that will be displayed here for type {description}</p>
                             </div>
                             <div className="card-action white-text">
-                                <a onClick={this.toggleEnable}>
+                                <a onClick={this.toggleEnable} style={{color: '#ffff80'}}>
                                     { this.state.enableCard ? 'Unselect' : 'Select' }
                                 </a>
                             </div>
