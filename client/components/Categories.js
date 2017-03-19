@@ -18,6 +18,8 @@ class Categories extends React.Component {
 
     updateCategory = (category) => {
         console.log("update category here")
+        // ** May use this for updating enable state to database **
+        
         // let { _id, name } = category;
         // $.ajax({
         // url: `/category/${_id}`,
@@ -61,11 +63,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Categories);
-
-// export default Categories;
-// <li><h5>Chinese</h5></li>
-// <li><h5>American</h5></li>
-// <li><h5>Italian</h5></li>
-// <li><h5>French</h5></li>
-// <li><h5>Korean</h5></li>
-// <li><h5>BBQ</h5></li>
