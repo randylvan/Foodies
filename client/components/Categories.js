@@ -5,7 +5,6 @@ import { getCategories }  from '../actions/categories'
 import Category from './Category';
 
 class Categories extends React.Component {
-    state = { enableCards: false }
 
     componentDidMount() {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
@@ -13,13 +12,12 @@ class Categories extends React.Component {
 
     toggleEnable = () => {
         console.log("toggle this");
-        this.setState({ enableCards: !this.state.enableCards });
     }
 
     updateCategory = (category) => {
         console.log("update category here")
         // ** May use this for updating enable state to database **
-        
+
         // let { _id, name } = category;
         // $.ajax({
         // url: `/category/${_id}`,
