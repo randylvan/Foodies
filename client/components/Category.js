@@ -18,19 +18,17 @@ class Category extends React.Component {
     render () {
             let {description, title, enabled, _id} = this.props;
             console.log(this.props.description);
-            let myColor = this.state.enableCard ? ' red ' : ' green ';
-            let myColorHue = this.state.enableCard ? ' darken-4 ' : ' darken-2 ';
+            let myColorHue = this.state.enableCard ? 'blue darken-4 ' : 'red darken-4 ';
             return (
                 <div>
                     <li key={_id} className="collection-item">
-                        <a className={'waves-effect waves-light btn-large ' + myColor } >{myColor} - {description} - {this.state.enableCard.toString()}</a>
-                        <div className={'card blue ' + myColorHue }>
+                        <div className={'card ' + myColorHue }>
                             <div className="card-content white-text">
-                                {description} - {this.state.enableCard.toString()}
+                                {description}
                             </div>
                             <div className="card-action white-text">
                                 <a onClick={this.toggleEnable}>
-                                    { this.state.enableCard ? 'Select' : 'Unselect' }
+                                    { this.state.enableCard ? 'Unselect' : 'Select' }
                                 </a>
                             </div>
                         </div>

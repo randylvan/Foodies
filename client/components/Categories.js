@@ -18,19 +18,19 @@ class Categories extends React.Component {
 
     updateCategory = (category) => {
         console.log("update category here")
-        // let { _id, name } = board;
+        // let { _id, name } = category;
         // $.ajax({
-        // url: `/boards/${_id}`,
+        // url: `/category/${_id}`,
         // type: 'PUT',
-        // data: { name }
-        // }).done( board => {
-        // let boards = this.state.boards.map( b => {
-        //     if (b._id === _id)
-        //     return board
-        //     return b
+        // data: { enabled }
+        // }).done( category => {
+        // let categories = this.state.categories.map( c => {
+        //     if (c._id === _id)
+        //     return category
+        //     return c
         // });
 
-        // this.setState({ boards });
+        // this.setState({ categories });
         // });
     }
 
