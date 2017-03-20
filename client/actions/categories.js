@@ -7,10 +7,16 @@ export const getCategories = () => {
       url: '/api/categories',
       type: 'GET'
     }).done( categories => {
-      dispatch({ type: 'CATEGORIES', categories })
+        dispatch(fetchCategories(categories))
     });
   }
 }
+
+const fetchCategories = (categories) =>{
+    return { type: 'CATEGORIES', categories}
+}
+
+
 
 // get enabled categories
 // enable category

@@ -50,7 +50,7 @@ class Auth extends React.Component {
               <button className="btn">{this.props.route.title}</button>
             </form>
           </div>
-          <div className="col s12 l6 center-align">
+          <div className="col s12 l5 center-align">
             <h3>Categories</h3>
             <Categories />
           </div>
