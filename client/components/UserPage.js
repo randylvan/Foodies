@@ -2,24 +2,14 @@ import React from 'react';
 
 class UserPage extends React.Component{
 
-    this.state = {email, password, phoneNumber, firstName, lastName, zipCode}
+    state = { user, email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
 
     componentsDidMount(){
         $.ajax({
             url: '/user',
             type: 'GET',
-            data:{
-                email: email.value,
-                name: name.value,
-                password: password.value,
-                firstName: firstName.value,
-                lastName: lastName.value,
-                zipCode: zipCode.value
-            }
-
         }).done(
-            this.setState(email, password, phoneNumber, firstName, lastName, zipCode)
-        );
+        ).fail();
     }
 
     render() {

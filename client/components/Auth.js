@@ -15,6 +15,8 @@ class Auth extends React.Component {
       data: { 
         email: email.value, 
         password: password.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
         phoneNumber: phoneNumber.value,
         zipCode: zipCode.value,
       }
