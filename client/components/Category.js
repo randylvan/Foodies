@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { getCategories }  from '../actions/categories'
 
 class Category extends React.Component {
     constructor(props) {
