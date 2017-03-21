@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { enableCat } from '../actions/categories';
 
 class Category extends React.Component {
     constructor(props) {
@@ -35,5 +36,9 @@ class Category extends React.Component {
             )
         }
 }
+const mapStateToProps = (state) => {
+ return { category: state.categories }
+}
 
-export default Category;
+export default connect(mapStateToProps)(Category);
+// export default Category;

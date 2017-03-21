@@ -16,6 +16,11 @@ const fetchCategories = (categories) =>{
     return { type: 'CATEGORIES', categories}
 }
 
+const enableCat = (title) => {
+  // use category title to update enabled state and add to userCat data collection
+  return {};
+}
+
 
 
 // get enabled categories
