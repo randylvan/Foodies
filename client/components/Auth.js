@@ -32,7 +32,7 @@ class Auth extends React.Component {
     return(
       <div>
         <input type="text" ref={n => this.firstName = n} placeholder="First Name"/>
-        <input type="text" ref={n => this.firstname = n} placeholder="Last Name"/>
+        <input type="text" ref={n => this.lastName = n} placeholder="Last Name"/>
         <input type="tel"  ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
         <input type="text" pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
       </div>
