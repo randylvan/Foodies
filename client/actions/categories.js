@@ -7,6 +7,7 @@ export const getCategories = () => {
       url: '/api/categories',
       type: 'GET'
     }).done( categories => {
+      console.log(categories);
         dispatch({ type: 'CATEGORIES', categories})
     });
   }

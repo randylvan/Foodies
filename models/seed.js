@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); 
 const seeder = require('mongoose-seed'); 
-const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/foodies' 
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/foodie' 
 seeder.connect(connectionString, () => { 
   seeder.loadModels([ 
     'models/category.js' 
