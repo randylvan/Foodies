@@ -7,7 +7,7 @@
     "dev_server": "webpack-dev-server --progress --config config/webpack.config.js",
     "build": "webpack --config config/webpack.config.js",
     "heroku-postbuild": "yarn build",
-    "seed": "node ./models/seed.js" 
+    "seed": "node ./models/seed.js"
   },
   "dependencies": {
     "autoprefixer": "^6.7.6",
@@ -51,6 +51,8 @@
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.3.0",
+    "yelp": "^1.0.2",
+    "yelp-fusion": "^1.0.3"
   }
 }
