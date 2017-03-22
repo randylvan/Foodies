@@ -14,11 +14,8 @@ mongoose.connect(mongoURI);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-<<<<<<< HEAD
 const categories = require('./routes/categories')
-=======
 const yelp = require('./routes/yelp');
->>>>>>> b83148fffbe213fc9fd82d3daee8cf07bef5dc88
 const app = express();
 
 // view engine setup
@@ -49,11 +46,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api/auth', auth);
-<<<<<<< HEAD
 app.use('/api/categories', categories);
-=======
 app.use('/yelp', yelp)
->>>>>>> b83148fffbe213fc9fd82d3daee8cf07bef5dc88
 
 app.use('*', index);
 
