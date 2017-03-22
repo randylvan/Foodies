@@ -11,8 +11,9 @@ class Category extends React.Component {
     }
 
     toggleEnable = () => {
-        console.log("toggle this");
+        // console.log("toggle this");
         this.setState({ enableCard: !this.state.enableCard });
+        this.setState
     }
 
     render () {
@@ -37,5 +38,9 @@ class Category extends React.Component {
             )
         }
 }
+const mapStateToProps = (state) => {
+ return { category: state.categories }
+}
 
-export default Category;
+export default connect(mapStateToProps)(Category);
+// export default Category;
