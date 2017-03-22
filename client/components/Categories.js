@@ -38,19 +38,23 @@ class Categories extends React.Component {
         console.log(this.props.categories);
         let categoryList = this.props.categories.map( category => {
             return (
+                <div>
                 <Category
                     key={category._id}
                     updateCategory={this.updateCategory}
                     {...category} 
                 />
+                </div>
             )
         });
         return(
-            <div>
+            <div className="container center-align">
+            <h3>Select Categories</h3>
+             <div className="row">
                 <ul>
                     {categoryList}
                 </ul>
-
+              </div>
             </div>
         )
     }

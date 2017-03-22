@@ -20,7 +20,7 @@ class Category extends React.Component {
             let {description, title, enabled, _id} = this.props;
             let myColorHue = this.state.enableCard ? 'green darken-4 ' : 'blue darken-3 ';
             return (
-                <div className="row">
+                <div className="col s12 m4 l4">
                     <li key={_id} className="collection-item">
                         <div className={'card ' + myColorHue }>
                             <div className="card-content white-text ">
