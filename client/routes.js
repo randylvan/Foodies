@@ -7,6 +7,7 @@ import Auth from './components/Auth';
 import NotFound from './components/NotFound';
 import MainPage from './components/MainPage';
 import LandingPage from './components/LandingPage';
+import Categories from './components/Categories';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -23,6 +24,7 @@ export default (
      <IndexRoute component={MainPage}/>
      <Route path="signup" component={Auth} title="Sign Up" />
      <Route path="signin" component={Auth} title="Sign In" />
+     <Route path="categories" component={Categories} title="Select Categories" />
      <Route component={AuthenticatedRoutes}>
          {/* PROTECTED BY AUTHENTICATION */}
        <Route component={AdminRoutes}>

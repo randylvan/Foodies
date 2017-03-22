@@ -7,17 +7,18 @@ export const getCategories = () => {
       url: '/api/categories',
       type: 'GET'
     }).done( categories => {
-        dispatch(fetchCategories(categories))
+        dispatch({ type: 'CATEGORIES', categories})
     });
   }
 }
 
-const fetchCategories = (categories) =>{
-    return { type: 'CATEGORIES', categories}
-}
+// const fetchCategories = (categories) =>{
+//     return { type: 'CATEGORIES', categories}
+// }
 
 const enableCat = (title) => {
   // use category title to update enabled state and add to userCat data collection
+  dispatch('ENABLE-CAT', enablecat)
   return {};
 }
 

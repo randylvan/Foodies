@@ -10,8 +10,9 @@ class Category extends React.Component {
     }
 
     toggleEnable = () => {
-        console.log("toggle this");
+        // console.log("toggle this");
         this.setState({ enableCard: !this.state.enableCard });
+        this.setState
     }
 
     render () {
