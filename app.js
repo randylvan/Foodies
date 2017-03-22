@@ -6,14 +6,19 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const Yelp = require('yelp-fusion');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/foodies';  // for Heroku connection
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/foodie';  // for Heroku connection
 mongoose.connect(mongoURI);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+<<<<<<< HEAD
 const categories = require('./routes/categories')
+=======
+const yelp = require('./routes/yelp');
+>>>>>>> b83148fffbe213fc9fd82d3daee8cf07bef5dc88
 const app = express();
 
 // view engine setup
@@ -44,7 +49,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api/auth', auth);
+<<<<<<< HEAD
 app.use('/api/categories', categories);
+=======
+app.use('/yelp', yelp)
+>>>>>>> b83148fffbe213fc9fd82d3daee8cf07bef5dc88
 
 app.use('*', index);
 

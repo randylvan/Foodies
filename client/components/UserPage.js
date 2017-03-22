@@ -1,19 +1,25 @@
 import React from 'react';
+import Profile from './Profile';
 
 class UserPage extends React.Component{
 
-    state = { user, email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
+<<<<<<< HEAD
+    state = { user: [], email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
+=======
+    state = { user: "", email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
+>>>>>>> a11d7a8fab425bcbb022845ab855b30fdf8f3d09
 
     componentsDidMount(){
         $.ajax({
             url: '/user',
             type: 'GET',
-        }).done(
-        ).fail();
+        }).done( user =>{
+            this.setState(user)
+        }).fail();
     }
 
     render() {
-
+        let {username, password} = this.state.user;
         return(
             <div className="container">
                 <div className="row">

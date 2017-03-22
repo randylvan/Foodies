@@ -2,24 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { refreshLogin } from '../actions/auth';
 import { setFlash } from '../actions/flash';
-import Categories from './Categories';
 
 class Auth extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    let { email, password, firstName, lastName, phoneNumber, zipCode, props: { location, dispatch, router }} = this;
+    let { email, password, props: { location, dispatch, router }} = this;
 
     $.ajax({
-      url: `/api/auth/${location.pathname}`,
+      url: `/api/auth${location.pathname}`,
       type: 'POST',
-      data: { 
-        email: email.value, 
-        password: password.value,
-        firstName: firstName.value,
-        lastName: lastName.value,
-        phoneNumber: phoneNumber.value,
-        zipCode: zipCode.value,
-      }
+      data: { email: email.value, password: password.value }
     }).done( user => {
       dispatch(refreshLogin(user));
       router.push("/")
@@ -28,19 +20,9 @@ class Auth extends React.Component {
     });
   }
 
-  info = () => {
-    return(
-      <div>
-        <input type="text" ref={n => this.firstName = n} placeholder="First Name"/>
-        <input type="text" ref={n => this.firstname = n} placeholder="Last Name"/>
-        <input type="tel"  ref={n => this.phoneNumber = n} placeholder="Phone Number"/>
-        <input type="text" pattern="[0-9]{5}" ref={n => this.zipCode = n} placeholder="Zip Code" />
-      </div>
-    )
-  }  
-
   render() {
     return (
+<<<<<<< HEAD
       <div className="container">
         <div className="row">
           <div className="col s12 l6">
@@ -57,6 +39,15 @@ class Auth extends React.Component {
             <Categories />
           </div>
         </div>
+=======
+      <div>
+        <h2 className="center">{this.props.route.title}</h2>
+          <form onSubmit={this.handleSubmit}>
+            <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
+            <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
+           <button className="btn">{this.props.route.title}</button>
+         </form>
+>>>>>>> b83148fffbe213fc9fd82d3daee8cf07bef5dc88
       </div>
     )
   }
