@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const Yelp = require('yelp-fusion');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/foodies';  // for Heroku connection
@@ -13,6 +14,7 @@ mongoose.connect(mongoURI);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const yelp = require('./routes/yelp');
 const app = express();
 
 // view engine setup
@@ -43,6 +45,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api/auth', auth);
+app.use('/yelp', yelp)
 
 app.use('*', index);
 

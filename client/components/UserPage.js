@@ -2,7 +2,7 @@ import React from 'react';
 
 class UserPage extends React.Component{
 
-    state = { user, email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
+    state = { user: "", email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
 
     componentsDidMount(){
         $.ajax({
