@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const yelp = require('yelp-fusion');
+const MainPage = require('../client/components/Yelp');
  
 const token = yelp.accessToken(process.env.YELP_CONSUMER_KEY, process.env.YELP_CONSUMER_SECRET).then(response => {
   console.log('Good job!');
@@ -17,13 +18,17 @@ let category = () => {
   return(cat[random]);
 }
 
-client.search({
-  categories: category(),
+router.get('/api', (req,res) => {
+  let cate = category();
+  client.search({
+  categories: cate,
   location: '84116'
 }).then(response => {
-  console.log(response.jsonBody.businesses);
+  res.json(response.jsonBody.businesses);
 }).catch(e => {
   console.log(e);
 });
+});
+
 
 module.exports = router;

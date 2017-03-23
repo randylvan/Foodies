@@ -4,12 +4,36 @@ import LandingPage from './LandingPage';
 
 class MainPage extends React.Component{
     
-    state = {toggle: false }
+    state = {toggle: false, restaurants:[]}
+
+    componentDidMount() {
+        
+        $.ajax({
+            url: '/yelp/api',
+            type: 'GET'
+        }).done( restaurants => {
+            // console.log(restaurants)
+            this.setState({ restaurants });
+        }).fail( err => {
+            alert(err);
+        });
+
+    }
+
+    rand = () => {
+        let number = Math.floor(Math.random()* this.state.restaurants.length);
+        return number;
+    }
 
     render(){
+        let restaurants = this.state.restaurants.map( restaurant => {
+            return( <div key={restaurant.id}>{restaurant.name}</div>)
+        })
+        // console.log(restaurants)
+        console.log(this.rand())
         return(
             <div>
-                {this.state.toggle ? <LandingPage/> : <UserPage/> }
+                {restaurants[this.rand()]}
             </div>
         )
     }
