@@ -35,26 +35,24 @@ class Categories extends React.Component {
     }
 
     render () {
-        console.log(this.props.categories);
         let categoryList = this.props.categories.map( category => {
+        console.log(category._id)
             return (
-                <div>
                 <Category
                     key={category._id}
-                    updateCategory={this.updateCategory}
                     {...category} 
                 />
-                </div>
             )
         });
         return(
             <div className="container center-align">
-            <h3>Select Categories</h3>
-             <div className="row">
-                <ul>
-                    {categoryList}
-                </ul>
-              </div>
+                <div className="row">
+                    <div className="col s12 m4 l4">
+                        <ul>
+                            {categoryList}
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -65,3 +63,12 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Categories);
+
+// <div className="container center-align">
+// <h3>Select Categories</h3>
+//     <div className="row">
+//     <ul>
+//         {categoryList}
+//     </ul>
+//     </div>
+// </div>
