@@ -10,6 +10,8 @@ const categories = ( state = [], action ) => {
           return cat
         }
       })
+    case 'ADD_CAT_TO_USER':
+      return state;
     default:
       return state;
   }
