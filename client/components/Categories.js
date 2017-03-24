@@ -37,12 +37,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Categories);
-
-// <div className="container center-align">
-// <h3>Select Categories</h3>
-//     <div className="row">
-//     <ul>
-//         {categoryList}
-//     </ul>
-//     </div>
-// </div>
