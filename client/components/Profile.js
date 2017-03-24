@@ -1,16 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Profile extends React.Component{
-    
 
-    componentDidMount(){
-        this.setState()
-    }
+    //state = {profile: {firstName: "default", lastName: "default", zipCode: "zip Code"}}    
+
+    // componentDidMount(){
+    //     $.ajax({
+    //         url: '/api/auth/user',
+    //         type: 'GET',
+    //     }).done( profile =>{
+    //         console.log("this works")
+    //         console.log(profile)
+    //         let { firstName, lastName, zipCode} = this.profile;
+    //         this.setState({profile})
+    //     }).fail(
+    //         console.log("this failed")
+    //     );
+    // }
+
 
     render(){
+        let {firstName, lastName, zipCode, username} = this.props.user;
         return(
             <div>
-            It works finally
+                <p>{firstName}</p>
+                <p>{lastName}</p>
+                <p>{zipCode}</p>
             </div>
 
         )
@@ -18,4 +34,9 @@ class Profile extends React.Component{
 
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return { user: state.user}
+    
+}
+
+export default connect(mapStateToProps)(Profile);

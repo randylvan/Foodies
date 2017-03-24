@@ -62,7 +62,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="container-fluid">
+        <nav className="container-fluid black">
           <div className="nav-wrapper nav-bar">
             <a href="#!" className="brand-logo"></a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>

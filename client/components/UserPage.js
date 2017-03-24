@@ -2,25 +2,17 @@ import React from 'react';
 import Profile from './Profile';
 
 class UserPage extends React.Component{
-    state = { user: [], email:"", password: "", phoneNumber: "", firstName: "", lastName:"", zipCode: ""}
+    state = {enableEdit: false}
 
-    componentsDidMount(){
-        $.ajax({
-            url: '/user',
-            type: 'GET',
-        }).done( user =>{
-            console.log(user)
-            this.setState({user})
-        }).fail();
-    }
+
 
     render() {
-        let {username, password} = this.state.user;
         return(
             <div className="container">
                 <div className="row">
                     <div className="col s6 l6">
-                    <hr />
+                        <h3>Profile</h3>
+                        <hr />
                         <Profile />    
                     </div>
                     <div className="col s12 l6">

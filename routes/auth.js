@@ -45,6 +45,8 @@ router.get('/user', isAuthenticated, (req,res) => {
   return res.json(req.user)
 });
 
+// router.get('/info')
+
 router.delete('/sign_out', (req, res) => {
   req.logout();
   res.status(200).json({});
