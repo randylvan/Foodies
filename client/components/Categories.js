@@ -38,20 +38,19 @@ class Categories extends React.Component {
         let categoryList = this.props.categories.map( category => {
         console.log(category._id)
             return (
-                <Category
-                    key={category._id}
-                    {...category} 
-                />
+                <div key={category._id} className="col s12 m4 l4">
+                    <Category
+                        {...category} 
+                    />
+                </div>
             )
         });
         return(
             <div className="container center-align">
                 <div className="row">
-                    <div className="col s12 m4 l4">
                         <ul>
                             {categoryList}
                         </ul>
-                    </div>
                 </div>
             </div>
         )
