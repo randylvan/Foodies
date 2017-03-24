@@ -3,7 +3,6 @@ const categories = ( state = [], action ) => {
     case 'CATEGORIES':
       return action.categories;
     case 'TOGGLE_ENABLE_CAT':
-      console.log(state);
       return state.map( cat => {
         if (action.id === cat._id) {
           return {...cat, enabled: !cat.enabled}
@@ -11,6 +10,8 @@ const categories = ( state = [], action ) => {
           return cat
         }
       })
+    case 'ADD_CAT_TO_USER':
+      return state;
     default:
       return state;
   }
