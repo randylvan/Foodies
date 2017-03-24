@@ -13,7 +13,8 @@ class App extends React.Component {
   links = () => {
     return [
       { name: 'Home', path: '/' },
-      { name: 'Categories', path: '/categories'}
+      { name: 'Categories', path: '/categories'},
+      { name: 'Dashboard', path: '/dashboard'}
     ].map( (link, i) => {
       return this.link(i, link.name, link.path)
     })

@@ -3,11 +3,13 @@ import { Route, IndexRoute, browserHistory } from 'react-router';
 import { UserAuthWrapper } from 'redux-auth-wrapper';
 import App from './containers/App';
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
-import Auth from './components/Auth';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 import NotFound from './components/NotFound';
 import MainPage from './components/MainPage';
 import LandingPage from './components/LandingPage';
 import Categories from './components/Categories';
+import UserPage from './components/UserPage';
 
 const AdminAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -22,10 +24,11 @@ export default (
  <Route>
    <Route path="/" component={App}>
      <IndexRoute component={MainPage}/>
-     <Route path="signup" component={Auth} title="Sign Up" />
-     <Route path="signin" component={Auth} title="Sign In" />
+     <Route path="signup" component={SignUp} title="Sign Up" />
+     <Route path="signin" component={SignIn} title="Sign In" />
      <Route path="categories" component={Categories} title="Select Categories" />
      <Route component={AuthenticatedRoutes}>
+        <Route path="dashboard" component={UserPage} title="Dashboard" />
          {/* PROTECTED BY AUTHENTICATION */}
        <Route component={AdminRoutes}>
            {/* PROTECTED BY ADMIN ACCESS */}

@@ -9,7 +9,8 @@ class UserPage extends React.Component{
             url: '/user',
             type: 'GET',
         }).done( user =>{
-            this.setState(user)
+            console.log(user)
+            this.setState({user})
         }).fail();
     }
 
@@ -19,13 +20,8 @@ class UserPage extends React.Component{
             <div className="container">
                 <div className="row">
                     <div className="col s6 l6">
-                        <h3>My Profile</h3>
-                        <li>{this.state.email}</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <hr />
+                    <hr />
+                        <Profile />    
                     </div>
                     <div className="col s12 l6">
                         <h3>Favorites</h3>

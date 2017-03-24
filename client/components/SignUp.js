@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 import { refreshLogin } from '../actions/auth';
 import { setFlash } from '../actions/flash';
 
-class Auth extends React.Component {
+class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    let { email, password, props: { location, dispatch, router }} = this;
+    let { email, password, firstName, lastName, zipCode, props: { location, dispatch, router }} = this;
 
     $.ajax({
-      url: `/api/auth${location.pathname}`,
+      url: `/api/auth/signup`,
       type: 'POST',
-      data: { email: email.value, password: password.value }
+      data: { 
+              email: email.value, 
+              password: password.value, 
+              firstName: firstName.value,
+              lastName: lastName.value,
+              zipCode: zipCode.value, 
+            }
     }).done( user => {
       dispatch(refreshLogin(user));
       router.push("/")
@@ -27,11 +33,14 @@ class Auth extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
             <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
-           <button className="btn">{this.props.route.title}</button>
+            <input type="text" ref={n => this.firstName = n}  placeholder="First Name"/>
+            <input type="text" ref={n => this.lastName = n} placeholder="Last Name"/>
+            <input type="text" ref={n => this.zipCode = n} pattern="[0-9]{5}" placeholder="Zip Code"/>
+           <button className="btn">Sign Up</button>
          </form>
       </div>
     )
   }
 }
 
-export default connect()(Auth);
+export default connect()(SignUp);
