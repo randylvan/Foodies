@@ -19,13 +19,13 @@ class Category extends React.Component {
     render () {
             let {description, title, enabled, _id} = this.props;
             let myColorHue = this.props.enabled ? 'green darken-4 ' : 'blue darken-3 ';
-            console.log("flux prop: " +  this.props.enabled + " for id: " + this.props._id)
+            // console.log("flux prop: " +  this.props.enabled + " for id: " + this.props._id)
             return (
                     <li key={_id} className="collection-item">
                         <div className={'card ' + myColorHue }>
                             <div className="card-content white-text ">
                                 <span className="card-title">{description}</span>
-                                <p>Maybe add an extended description in the database that will be displayed here for type {description}</p>
+                                <p>Description: {description}</p>
                             </div>
                             <div className="card-action white-text" style={{backgroundColor: '#b3b3b3'}}>
                                 <a onClick={this.toggleEnable} style={{color: '#0f488a'}}>

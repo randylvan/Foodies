@@ -10,29 +10,29 @@ class Categories extends React.Component {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
     }
 
-    toggleEnable = () => {
-        console.log("toggle this");
-    }
+    // toggleEnable = () => {
+    //     console.log("toggle this");
+    // }
 
-    updateCategory = (category) => {
-        console.log("update category here")
-        // ** May use this for updating enable state to database **
+    // updateCategory = (category) => {
+    //     // console.log("update category here")
+    //     // ** May use this for updating enable state to database **
 
-        // let { _id, name } = category;
-        // $.ajax({
-        // url: `/category/${_id}`,
-        // type: 'PUT',
-        // data: { enabled }
-        // }).done( category => {
-        // let categories = this.state.categories.map( c => {
-        //     if (c._id === _id)
-        //     return category
-        //     return c
-        // });
+    //     // let { _id, name } = category;
+    //     // $.ajax({
+    //     // url: `/category/${_id}`,
+    //     // type: 'PUT',
+    //     // data: { enabled }
+    //     // }).done( category => {
+    //     // let categories = this.state.categories.map( c => {
+    //     //     if (c._id === _id)
+    //     //     return category
+    //     //     return c
+    //     // });
 
-        // this.setState({ categories });
-        // });
-    }
+    //     // this.setState({ categories });
+    //     // });
+    // }
 
     render () {
         let categoryList = this.props.categories.map( category => {

@@ -3,7 +3,6 @@ const categories = ( state = [], action ) => {
     case 'CATEGORIES':
       return action.categories;
     case 'TOGGLE_ENABLE_CAT':
-      console.log(state);
       return state.map( cat => {
         if (action.id === cat._id) {
           return {...cat, enabled: !cat.enabled}
