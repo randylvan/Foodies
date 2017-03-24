@@ -14,7 +14,8 @@ const client = yelp.client(process.env.YELP_TOKEN_SECRET);
 let cat = ['salvadoran', 'german', 'american', 'thai', 'chinese', 'mexican'];
 
 let category = () => {
-  let random = (Math.floor(Math.random() * cat.length) + 1);
+  let random = (Math.floor(Math.random() * cat.length));
+  console.log(cat[random])
   return(cat[random]);
 }
 
