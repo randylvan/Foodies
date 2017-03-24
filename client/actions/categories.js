@@ -18,3 +18,14 @@ export const toggleEnableCat = (id) => {
     dispatch({type: 'TOGGLE_ENABLE_CAT', id})
   }
 }
+
+export const setUserCategory = () => {
+  return (dispatch) => {
+    $.ajax({
+      url:'/api/users',
+      type: 'PUT'
+    }).done( category => {
+    dispatch({type: 'ADD_CAT_TO_USER', category})
+    });
+  }
+}
