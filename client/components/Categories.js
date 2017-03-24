@@ -36,7 +36,7 @@ class Categories extends React.Component {
 
     render () {
         let categoryList = this.props.categories.map( category => {
-        console.log(category._id)
+        // console.log(category._id)
             return (
                 <div key={category._id} className="col s12 m4 l4">
                     <Category

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { getCategories }  from '../actions/categories'
+import { getCategories, toggleEnableCat }  from '../actions/categories'
 
 class Category extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Category extends React.Component {
     toggleEnable = () => {
         // console.log("toggle this");
         this.setState({ enableCard: !this.state.enableCard });
-        this.setState
+        this.props.dispatch(toggleEnableCat(this.props._id));
     }
 
     render () {
@@ -37,7 +37,8 @@ class Category extends React.Component {
         }
 }
 const mapStateToProps = (state) => {
- return { category: state.categories }
+
+    return { category: state.category }
 }
 
 export default connect(mapStateToProps)(Category);
