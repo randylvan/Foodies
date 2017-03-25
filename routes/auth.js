@@ -53,6 +53,7 @@ router.delete('/sign_out', (req, res) => {
 });
 
 // Add a category to the user enabledCategories array
+// This works but sends only one category
 router.put('/addUserCat', (req, res) => {
  let { id, title } = req.body
  User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
@@ -60,6 +61,7 @@ router.put('/addUserCat', (req, res) => {
      return res.status(500).json({ message: 'Invalid Username' });
   });
 });
+
 
 // router.put('/addUserCat', (req, res) => {
 //  let { id, title } = req.body
