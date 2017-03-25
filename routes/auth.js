@@ -87,4 +87,18 @@ router.put('/addUserCat', (req, res) => {
  });
 });
 
+router.get('/getCurrUserCats', (req,res) => {
+  let id = req.body.id;
+  User.findById(id, (err, user) => {
+    let currCats = user.enabledCats;
+    return res.json(currCats);
+  })
+});
+
+// router.get('/', (req, res) => {
+//   Note.find( ( err, notes) => {
+//     res.json(notes);
+//   });
+// });
+
 module.exports = router;

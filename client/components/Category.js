@@ -10,10 +10,7 @@ class Category extends React.Component {
 
     toggleEnable = () => {
         this.props.dispatch(toggleEnableCat(this.props._id));
-        // console.log("title: " + this.props.title)
         this.props.dispatch(setUserCategory(this.props.user._id, this.props.title))
-        // console.log("enabled cats: " + this.props.enabledCats)
-        // this.props.dispatch(setUserCategory(this.props.title))
     }
 
     render () {

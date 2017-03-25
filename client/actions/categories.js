@@ -37,3 +37,14 @@ export const setUserCategory = (id, title) => {
     });
   }
 }
+
+export const getCurUserCats = (id, title) => {
+  return (dispatch) => {
+    $.ajax({
+      url:'/api/auth/getCurrUserCats',
+      type: 'GET'
+    }).done( cats => {
+    dispatch({type: 'GET_CATS_FOR_USER', cats})
+    });
+  }
+}
