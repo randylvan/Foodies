@@ -1,5 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
+import Favorites from './Favorites';
 
 class UserPage extends React.Component{
     state = {enableEdit: false}
@@ -18,6 +19,7 @@ class UserPage extends React.Component{
                     <div className="col s12 l6">
                         <h3>Favorites</h3>
                         <hr />
+                        <Favorites/>
                     </div>
                 </div>
 
