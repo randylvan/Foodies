@@ -99,7 +99,7 @@ class MainPage extends React.Component{
                             
                             
                                 <input type="checkbox" id="test5" />
-                                <label HtmlFor="test5">German</label>
+                                <label htmlFor="test5">German</label>
                             
                             </form>
                         </div>
