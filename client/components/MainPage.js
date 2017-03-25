@@ -92,14 +92,14 @@ class MainPage extends React.Component{
                 <div className="col s12 m3">
                     <div className="card">
                         <div className="card-content">
-                            <div className="card-title">
+                            <div className="card-title blue-text darken-1">
                                 Preferences:
                             </div>
                             <form action="#">
                             
                             
                                 <input type="checkbox" id="test5" />
-                                <label for="test5">German</label>
+                                <label HtmlFor="test5">German</label>
                             
                             </form>
                         </div>
@@ -113,16 +113,16 @@ class MainPage extends React.Component{
                 <div className="col s12 m3">
                     <div className="card">
                         <div className="card-content">
-                            <div className="card-title">
+                            <div className="card-title orange-text darken-3">
                                 Favorites:
                             </div>
                             <form action="#">
                                 <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label for="test5">Indian</label></p>
+                                <label htmlFor="test5">Indian</label></p>
                                 <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label for="test5">Italian</label></p>
+                                <label htmlFor="test5">Italian</label></p>
                                 <input type="checkbox" id="test5" checked="checked"/>
-                                <label for="test5">Salvadoran</label>
+                                <label htmlFor="test5">Salvadoran</label>
                             </form>
                         </div>
                     </div>
