@@ -52,5 +52,13 @@ router.delete('/sign_out', (req, res) => {
   res.status(200).json({});
 });
 
+// Add a category to the user enabledCategories array
+router.put('/addUserCat', (req, res) => {
+ let { id, title } = req.body
+ User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
+   if (!user)
+     return res.status(500).json({ message: 'Invalid Username' });
+  });
+});
 
 module.exports = router;

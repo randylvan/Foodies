@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { getCategories, toggleEnableCat }  from '../actions/categories'
+import { getCategories, toggleEnableCat, setUserCategory }  from '../actions/categories'
 
 class Category extends React.Component {
     constructor(props) {
@@ -10,6 +10,10 @@ class Category extends React.Component {
 
     toggleEnable = () => {
         this.props.dispatch(toggleEnableCat(this.props._id));
+        // console.log("title: " + this.props.title)
+        this.props.dispatch(setUserCategory(this.props.user._id, this.props.title))
+        // console.log("enabled cats: " + this.props.enabledCats)
+        // this.props.dispatch(setUserCategory(this.props.title))
     }
 
     render () {
@@ -33,7 +37,7 @@ class Category extends React.Component {
         }
 }
 const mapStateToProps = (state) => {
-    return { category: state.category }
+    return { category: state.category, user: state.user }
 }
 
 export default connect(mapStateToProps)(Category);

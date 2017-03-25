@@ -33,7 +33,10 @@ class Categories extends React.Component {
 }
 
 const mapStateToProps = (state) => {
- return { categories: state.categories }
+    let enabledCats = state.categories
+        .filter( cat => cat.enabled === true )
+        .map( cat => cat.title )
+ return { categories: state.categories, enabledCats }
 }
 
-export default connect(mapStateToProps)(Categories);
+export default connect(mapStateToProps)(Categories); //attaches redux store to the component

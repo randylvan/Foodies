@@ -19,13 +19,21 @@ export const toggleEnableCat = (id) => {
   }
 }
 
-export const setUserCategory = () => {
+// // Rick: do I need a seperate function here?
+// export const setUserCategory = (title) => {
+//   return (dispatch) => {
+//     dispatch({type: 'ADD_CAT_TO_USER', title})
+//   }
+// }
+
+export const setUserCategory = (id, title) => {
   return (dispatch) => {
     $.ajax({
-      url:'/api/users',
-      type: 'PUT'
-    }).done( category => {
-    dispatch({type: 'ADD_CAT_TO_USER', category})
+      url:'/api/auth/addUserCat',
+      type: 'PUT',
+      data: { id, title }
+    }).done( title => {
+    dispatch({type: 'ADD_CAT_TO_USER', title})
     });
   }
 }
