@@ -67,8 +67,7 @@ router.put('/addUserCat', (req, res) => {
  let { id, title } = req.body
  User.findById(id, (err, user )=> {
    let currCats = user.enabledCategories;
-   //Check is category exists
-   //Remove from array otherwise add it to the end
+
    if (currCats.includes(title)) {
      //remove cat
      var index = currCats.indexOf(title);
@@ -85,19 +84,6 @@ router.put('/addUserCat', (req, res) => {
         res.json(user)
       });
    }
-  //  console.log("currCats: " + currCats);
-  //  console.log("New cat: " + title);
-  //  currCats.push(title);
-  //  console.log("All cats: " + currCats)
-  //  user.enabledCategories = currCats;
-  //  console.log("enableCats: " + user.enabledCategories)
-  // console.log("here in addUserCat2");
-  // console.log("id: " + id);
-  // user.enabledCategories.push(title);
-  // console.log("cat: " +  user.enabledCategories);
-  // user.save( (err, user) => {
-  //    res.json(user)
-  //  });
  });
 });
 
