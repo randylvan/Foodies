@@ -19,7 +19,7 @@ let category = () => {
   return(cat[random]);
 }
 
-router.get('/api', (req,res) => {
+router.get('/yelp/api', (req,res) => {
   let cate = category();
   client.search({
   categories: cate,
