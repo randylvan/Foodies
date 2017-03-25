@@ -54,27 +54,51 @@ router.delete('/sign_out', (req, res) => {
 
 // Add a category to the user enabledCategories array
 // This works but sends only one category
-router.put('/addUserCat', (req, res) => {
- let { id, title } = req.body
- User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
-   if (!user)
-     return res.status(500).json({ message: 'Invalid Username' });
-  });
-});
-
-
 // router.put('/addUserCat', (req, res) => {
 //  let { id, title } = req.body
-//  User.findById(id, (err, user )=> {
-//   //  let currCats = user.enabledCategories;
-//   //  currCats.push(title);
-//   //  user.enabledCategories = currCats;
-//   console.log("here in addUserCat");
-//    user.enabledCategories.push(title);
-//    user.save( (err, user) => {
-//      res.json(user)
-//    });
-//  });
+//  User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
+//    if (!user)
+//      return res.status(500).json({ message: 'Invalid Username' });
+//   });
 // });
+
+
+router.put('/addUserCat', (req, res) => {
+ let { id, title } = req.body
+ User.findById(id, (err, user )=> {
+   let currCats = user.enabledCategories;
+   //Check is category exists
+   //Remove from array otherwise add it to the end
+   if (currCats.includes(title)) {
+     //remove cat
+     var index = currCats.indexOf(title);
+     currCats.splice(index, 1);
+     user.enabledCategories = currCats;
+     user.save( (err, user) => {
+        res.json(user)
+      });
+   } else {
+     //add cat
+     currCats.push(title);
+     user.enabledCategories = currCats;
+     user.save( (err, user) => {
+        res.json(user)
+      });
+   }
+  //  console.log("currCats: " + currCats);
+  //  console.log("New cat: " + title);
+  //  currCats.push(title);
+  //  console.log("All cats: " + currCats)
+  //  user.enabledCategories = currCats;
+  //  console.log("enableCats: " + user.enabledCategories)
+  // console.log("here in addUserCat2");
+  // console.log("id: " + id);
+  // user.enabledCategories.push(title);
+  // console.log("cat: " +  user.enabledCategories);
+  // user.save( (err, user) => {
+  //    res.json(user)
+  //  });
+ });
+});
 
 module.exports = router;
