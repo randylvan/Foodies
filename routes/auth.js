@@ -55,10 +55,20 @@ router.delete('/sign_out', (req, res) => {
 // Add a category to the user enabledCategories array
 router.put('/addUserCat', (req, res) => {
  let { id, title } = req.body
- User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
-   if (!user)
-     return res.status(500).json({ message: 'Invalid Username' });
-  });
+ User.findById(id, (err, user )=> {
+  //  let currCats = user.enabledCategories;
+  //  currCats.push(title);
+  //  user.enabledCategories = currCats;
+  console.log("here in addUserCat");
+   user.enabledCategories.push(title);
+   user.save( (err, user) => {
+     res.json(user)
+   });
+ });
+//  User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
+//    if (!user)
+//      return res.status(500).json({ message: 'Invalid Username' });
+//   });
 });
 
 module.exports = router;
