@@ -9,6 +9,7 @@ let User = new Schema({
   lastName: {type: String},
   zipCode: {type: String},
   enabledCategories: {type: Array},
+  favorites: {type: Array},
   role: { type: String, default: 'user' }
 });
 

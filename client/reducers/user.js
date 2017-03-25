@@ -1,6 +1,7 @@
 const user = (state = {}, action) => {
   switch(action.type) {
     case 'USER':
+<<<<<<< Updated upstream
       return action.user
     case 'ADD_CAT_TO_USER':
       state.enabledCategories = [...state.enabledCategories, action.title];

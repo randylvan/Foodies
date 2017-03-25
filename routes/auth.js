@@ -11,8 +11,8 @@ const isAuthenticated = (req, res, next) => {
 }
 
 router.post('/signup', (req, res) => {
-  let { email, password, firstName, lastName, zipCode, enabledCategories } = req.body;
-  User.register(new User({username: email, firstName, lastName, zipCode, enabledCategories }), password, (err, user) => {
+  let { email, password, firstName, lastName, zipCode, enabledCategories, favorites } = req.body;
+  User.register(new User({username: email, firstName, lastName, zipCode, enabledCategories, favorites }), password, (err, user) => {
     if (err)
       return res.status(500).json(err);
     user.save( (err, user) => {
@@ -45,23 +45,11 @@ router.get('/user', isAuthenticated, (req,res) => {
   return res.json(req.user)
 });
 
-// router.get('/info')
 
 router.delete('/sign_out', (req, res) => {
   req.logout();
   res.status(200).json({});
 });
-
-// Add a category to the user enabledCategories array
-// This works but sends only one category
-// router.put('/addUserCat', (req, res) => {
-//  let { id, title } = req.body
-//  User.findOneAndUpdate({ _id: id}, { enabledCategories: title }, (err, user) => {
-//    if (!user)
-//      return res.status(500).json({ message: 'Invalid Username' });
-//   });
-// });
-
 
 router.put('/addUserCat', (req, res) => {
  let { id, title } = req.body
@@ -95,10 +83,13 @@ router.get('/getCurrUserCats', (req,res) => {
   })
 });
 
-// router.get('/', (req, res) => {
-//   Note.find( ( err, notes) => {
-//     res.json(notes);
-//   });
-// });
+router.put('/update/:id', isAuthenticated, (req, res) => {
+	let {firstName, lastName, zipCode, email} = req.body;
+	User.findOneAndUpdate({_id: req.params.id}, {username: email, firstName: firstName, lastName: lastName, zipCode: zipCode}, {new: true}, function(err, user){
+		if (err) return res.status(500).json({ message: 'Error updating user!' });
+			return res.json(user);
+	});
+});
+
 
 module.exports = router;

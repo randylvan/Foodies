@@ -16,7 +16,7 @@ class SignUp extends React.Component {
               password: password.value, 
               firstName: firstName.value,
               lastName: lastName.value,
-              zipCode: zipCode.value, 
+              zipCode: zipCode.value,
             }
     }).done( user => {
       dispatch(refreshLogin(user));

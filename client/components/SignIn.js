@@ -30,7 +30,7 @@ class SignIn extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
             <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
-           <button className="btn">"Sign In"</button>
+           <button className="btn">Sign In</button>
          </form>
       </div>
     )
