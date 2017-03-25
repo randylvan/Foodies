@@ -11,7 +11,7 @@ const token = yelp.accessToken(process.env.YELP_CONSUMER_KEY, process.env.YELP_C
 
 const client = yelp.client(process.env.YELP_TOKEN_SECRET);
  
-let cat = ['salvadoran', 'german', 'american', 'thai', 'chinese', 'mexican'];
+let cat = ['salvadoran', 'german', 'thai', 'chinese', 'mexican'];
 
 let category = () => {
   let random = (Math.floor(Math.random() * cat.length));
@@ -26,6 +26,7 @@ router.get('/api', (req,res) => {
   location: '84116'
 }).then(response => {
   res.json(response.jsonBody.businesses);
+  console.log(response.jsonBody.businesses);
 }).catch(e => {
   console.log(e);
 });

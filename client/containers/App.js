@@ -12,7 +12,6 @@ class App extends React.Component {
 
   links = () => {
     return [
-      { name: 'Home', path: '/' },
       { name: 'Categories', path: '/categories'},
       { name: 'Dashboard', path: '/dashboard'}
     ].map( (link, i) => {
@@ -32,6 +31,7 @@ class App extends React.Component {
   authLinks = () => {
     if (Object.keys(this.props.user).length) {
        let links = [
+         {name: 'Home', path:'/home'}
         ].map( (link, i) => {
           return this.link(i, link.name, link.path)
         });
@@ -50,6 +50,7 @@ class App extends React.Component {
       return links;
     } else {
       return [
+        { name: 'Home', path: '/' },
         { name: 'Sign In', path: '/signin' },
         { name: 'Sign Up', path: '/signup' },
       ].map( (link, i) => {
@@ -62,7 +63,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="container-fluid black">
+        <nav className="container-fluid red darken-1">
           <div className="nav-wrapper nav-bar">
             <a href="#!" className="brand-logo"></a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>

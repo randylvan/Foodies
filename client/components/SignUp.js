@@ -20,7 +20,7 @@ class SignUp extends React.Component {
             }
     }).done( user => {
       dispatch(refreshLogin(user));
-      router.push("/")
+      router.push("/home")
     }).fail( err => {
       dispatch(setFlash(err.responseJSON.message, 'error'))
     });
