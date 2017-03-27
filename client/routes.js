@@ -24,13 +24,13 @@ export default (
  <Route>
    <Route path="/" component={App}>
      <IndexRoute component={LandingPage}/>
-     <Route path="/home" component={MainPage}/>
+     <Route path="home" component={MainPage}/>
      <Route path="signup" component={SignUp} title="Sign Up" />
      <Route path="signin" component={SignIn} title="Sign In" />
-     <Route path="categories" component={Categories} title="Select Categories" />
      <Route component={AuthenticatedRoutes}>
-        <Route path="dashboard" component={UserPage} title="Dashboard" />
          {/* PROTECTED BY AUTHENTICATION */}
+       <Route path="dashboard" component={UserPage} title="Dashboard" />
+       <Route path="categories" component={Categories} title="Select Categories" />
        <Route component={AdminRoutes}>
            {/* PROTECTED BY ADMIN ACCESS */}
        </Route>

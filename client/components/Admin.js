@@ -1,7 +1,16 @@
-const Admin = () => (
- <div>
-   I am an admin
- </div>
-)
+import React from 'react';
 
-export default Admin
+class Admin extends React.Component {
+  componentDidMount(){
+
+  }
+
+  render(){
+    return(
+      <div>
+      </div>
+    )
+  }
+}
+
+export default Admin;

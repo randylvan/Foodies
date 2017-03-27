@@ -16,11 +16,11 @@ class UserPage extends React.Component{
                         <hr />
                         <Profile />    
                     </div>
-                    <div className="col s12 l6">
-                        <h3>Favorites</h3>
-                        <hr />
-                        <Favorites/>
-                    </div>
+                </div>
+                <div className="row">
+                    <h3>Favorites</h3>
+                    <hr />
+                    <Favorites/>
                 </div>
 
             </div>
