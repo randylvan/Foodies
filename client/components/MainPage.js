@@ -1,6 +1,7 @@
 import React from 'react';
 import UserPage from './UserPage';
 import LandingPage from './LandingPage';
+import { refreshLogin } from '../actions/auth';
 
 
 class MainPage extends React.Component{
@@ -17,6 +18,7 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -36,12 +38,14 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
     }
 
-    toast = () => {
+    toast = (e) => {
+        e.preventDefault();
     this.setState({toggle: !this.state.toggle});
     if (this.state.toggle === true){
         return Materialize.toast('You have favorited', 4000);
@@ -85,7 +89,7 @@ class MainPage extends React.Component{
                                 
                             </div>
                     </div>)
-        })
+        });
       
         return(
             <div className="row">
