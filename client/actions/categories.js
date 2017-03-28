@@ -32,8 +32,8 @@ export const setUserCategory = (id, title) => {
       url:'/api/auth/addUserCat',
       type: 'PUT',
       data: { id, title }
-    }).done( title => {
-    dispatch({type: 'ADD_CAT_TO_USER', title})
+    }).done( user => {
+      dispatch({type: 'ADD_CAT_TO_USER', title})
     });
   }
 }

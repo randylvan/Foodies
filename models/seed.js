@@ -72,11 +72,6 @@ const data = [
             "enabled": false
         },
         {
-            "description": "Mexican",
-            "title": "mexican",
-            "enabled": false
-        },
-        {
             "description": "Viettitlese",
             "title": "viettitlese",
             "enabled": false
