@@ -10,10 +10,21 @@ class Categories extends React.Component {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
     }
 
+    //Set the category in store to enabled also
+    // setStoreCatToEnabled(catId) {
+    //     let c;
+    //     for (c of this.props.categories) {
+    //         if (c._id === catId){
+    //             console.log("Cat ID: " + catId);
+    //         }
+    //     }
+    // }
+
     render () {
         let enabledCategories = this.props.user.enabledCategories || []
         let categoryList = this.props.categories.map( category => {
             if (enabledCategories.includes(category.title)) {
+                // this.setStoreCatToEnabled(category._id);
                 return (
                     <div key={category._id} className="col s12 m4 l4">
                         <Category
@@ -34,7 +45,6 @@ class Categories extends React.Component {
                 )
             }
         });
-
 
         return(
             <div className="container center-align">
