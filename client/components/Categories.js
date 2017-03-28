@@ -18,7 +18,7 @@ class Categories extends React.Component {
         let categoryList = this.props.categories.map( category => {
             if (enabledCategories.includes(category.title)) {
                 return (
-                    <div key={category._id} className="col s12 m6 l6">
+                    <div key={category._id} className="col s12 m4 l4">
                         <Category
                             description={category.description} 
                             title={category.title} 

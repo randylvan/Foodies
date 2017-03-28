@@ -117,11 +117,6 @@ const data = [
             "enabled": false
         },
         {
-            "description": "Salad",
-            "title": "salad",
-            "enabled": false
-        },
-        {
             "description": "Breakfast & Brunch",
             "title": "breakfast_brunch",
             "enabled": false
@@ -214,11 +209,6 @@ const data = [
         {
             "description": "Vegetarian",
             "title": "vegetarian",
-            "enabled": false
-        },
-        {
-            "description": "Gastropubs",
-            "title": "gastropubs",
             "enabled": false
         }
     ] 
