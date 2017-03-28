@@ -20,6 +20,8 @@ class UserPage extends React.Component{
                 <div className="row">
                     <h3>Favorites</h3>
                     <hr />
+                </div>
+                <div className="row">
                     <Favorites/>
                 </div>
 

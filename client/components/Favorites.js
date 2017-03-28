@@ -1,6 +1,6 @@
 import React from 'react';
-//import { connect } from 'react-redux';
-import Favorite from './Favorite';
+import { connect } from 'react-redux';
+
 
 class Favorites extends React.Component {
     state = {favorites: [], testFavorites: ["jango","ramen","butter"] };
@@ -11,19 +11,17 @@ class Favorites extends React.Component {
 
     render() {
         //this.setState({favorites: this.props.favorites})
-        let favoriteList = this.state.testFavorites.map( favorite => {
+        let favoriteList = this.props.favorites.map( (favorite, i) => {
             return(
                 <div key={i}>
-                <div className="col s12 m4 l4">
-                    <div className="card">
-                        <div className="card-image">
-                        <span className="card-title">{favorite}</span>
-                        </div>
-                        <div className="card-content">
-                            <p>Hello there</p>
+                    <div className="col s12 m4 l4">
+                        <div className="card blue">
+                            <span className="card-title">{favorite}</span>
+                            <div className="card-content">
+                                <p>Hello there</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             )
         })
@@ -40,5 +38,4 @@ const mapStateToProps= (state) => {
     return  {favorites: favoritesSaved}
 }
 
-//export default connect(mapStateToProps)(Favorite);
-export default Favorite;
+export default connect(mapStateToProps)(Favorites);
