@@ -8,9 +8,6 @@ class Categories extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(getCategories()); //Call  ./action/categories.js
-        // console.log("User here" + this.props.user._id)
-        // this.props.dispatch(getCurUserCats(this.props.user._id));
-        console.log(this.props.user.enabledCategories)
     }
 
     render () {
@@ -37,7 +34,6 @@ class Categories extends React.Component {
                 )
             }
         });
-
 
         return(
             <div className="container center-align">
