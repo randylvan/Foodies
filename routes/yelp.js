@@ -11,26 +11,22 @@ const token = yelp.accessToken(process.env.YELP_CONSUMER_KEY, process.env.YELP_C
 
 const client = yelp.client(process.env.YELP_TOKEN_SECRET);
  
-let cat = ['salvadoran', 'german', 'thai', 'chinese', 'mexican'];
-
-let category = () => {
-  let random = (Math.floor(Math.random() * cat.length));
-  console.log(cat[random])
-  return(cat[random]);
-}
 
 router.get('/api', (req,res) => {
-  let cate = category();
+  console.log(req.query)
+  let {category, zipCode} = req.query;
+  console.log(category);
   client.search({
-  categories: cate,
-  location: '84116'
-}).then(response => {
+  categories: category,
+  location: zipCode,
+  limit: "50"
+  }).then(response => {
   res.json(response.jsonBody.businesses);
-  console.log(response.jsonBody.businesses);
-}).catch(e => {
+  }).catch(e => {
   console.log(e);
+  });
 });
-});
+
 
 
 module.exports = router;
