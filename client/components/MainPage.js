@@ -1,19 +1,26 @@
 import React from 'react';
-import UserPage from './UserPage';
-import LandingPage from './LandingPage';
+import {connect} from 'react-redux';
+
 
 
 class MainPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {restaurants:[], toggle: false}
+        this.state = {restaurants:[], toggle: false, position:[]}
     }
 
     componentDidMount() {
-        
+        let {categories, zipCode} = this.props;
+        let category = this.randomCategory(categories);
+        console.log(category)
+        console.log(zipCode)
         $.ajax({
-            url: '/yelp/api',
-            type: 'GET'
+            url: `/yelp/api`,
+            type: 'GET',
+            data:{
+                category: category,
+                zipCode: zipCode,
+            }
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
@@ -29,10 +36,24 @@ class MainPage extends React.Component{
     }
 
 
+    randomCategory = (category) => {
+    let random = (Math.floor(Math.random() * category.length));
+    return(category[random]);
+    }
+
+
     callToApi = () => {
+        let {categories, zipCode} = this.props;
+        //let {longitude, latitude} = this.props;
+        let category = this.randomCategory(categories)
+ 
         $.ajax({
             url: '/yelp/api',
-            type: 'GET'
+            type: 'GET',
+            data:{
+                category: category,
+                zipCode: zipCode
+            }
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
@@ -41,15 +62,14 @@ class MainPage extends React.Component{
         });
     }
 
+    addFavorite = () => {
+
+    }
     toast = () => {
-    this.setState({toggle: !this.state.toggle});
-    if (this.state.toggle === true){
+
         return Materialize.toast('You have favorited', 4000);
     }
-    else {
-        return Materialize.toast('You unfavorited', 4000);
-    }
-    }
+    
 
     render() {
         let restaurants = this.state.restaurants.map( restaurant => {
@@ -137,4 +157,9 @@ const styles = {
     justifyContent: "space-around"
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+    let enabledCats = state.user.enabledCategories.map( enabled => enabled);
+    return {categories: enabledCats, zipCode: state.user.zipCode}
+}
+
+export default connect(mapStateToProps)(MainPage);
