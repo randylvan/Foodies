@@ -57,7 +57,6 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
-            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
