@@ -24,6 +24,7 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -57,6 +58,7 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -66,7 +68,6 @@ class MainPage extends React.Component{
 
     }
     toast = () => {
-
         return Materialize.toast('You have favorited', 4000);
     }
     
@@ -105,7 +106,7 @@ class MainPage extends React.Component{
                                 
                             </div>
                     </div>)
-        })
+        });
       
         return(
             <div className="row">
