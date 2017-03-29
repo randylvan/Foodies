@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {restaurants:[], toggle: false, position:[]}
+        this.state = {restaurants:[], toggle: false, position:[], number: []}
     }
 
     componentDidMount() {
@@ -24,6 +24,9 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
+
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -32,7 +35,7 @@ class MainPage extends React.Component{
 
     rand = () => {
         let number = Math.floor(Math.random()* this.state.restaurants.length);
-        return number;
+        this.setState({number: number});
     }
 
 
@@ -57,6 +60,8 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -66,6 +71,10 @@ class MainPage extends React.Component{
 
     }
     toast = () => {
+        this.setState({toggle: !this.state.toggle});
+        if (this.state.toggle == true) {
+            return Materialize.toast('You have unfavorited', 4000);
+        }
         return Materialize.toast('You have favorited', 4000);
     }
     
@@ -129,7 +138,7 @@ class MainPage extends React.Component{
                 </div>
                 
                 <div className="col s12 m6">
-                    {restaurants[this.rand()]}
+                    {restaurants[this.state.number]}
                 </div>
 
                 <div className="col s12 m3">
