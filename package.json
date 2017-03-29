@@ -7,9 +7,10 @@
     "dev_server": "webpack-dev-server --progress --config config/webpack.config.js",
     "build": "webpack --config config/webpack.config.js",
     "heroku-postbuild": "yarn build",
-    "seed": "yarn node ./models/seed.js"
+    "seed": "node ./models/seed.js"
   },
   "dependencies": {
+    "seed": "node ./models/seed.js",
     "autoprefixer": "^6.7.6",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
