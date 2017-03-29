@@ -24,7 +24,6 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
-            dispatch(refreshLogin(user));
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -74,7 +73,8 @@ class MainPage extends React.Component{
 
     render() {
         let restaurants = this.state.restaurants.map( restaurant => {
-            return( <div key={restaurant.id} className="card large grey lighten-4 hoverable">
+            return( 
+                <div key={restaurant.id} className="card large grey lighten-4 hoverable">
                         
                             <div className="card-image">
                                 <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://hd-wall-papers.com/images/wallpapers/image-not-available/image-not-available-17.jpg"} width="20%" height="20%"/>
@@ -105,9 +105,15 @@ class MainPage extends React.Component{
                                         <a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>
                                 
                             </div>
-                    </div>)
-        });
+                    </div>
+                    )});
       
+        let categoryList = this.props.categories.map( (category, i )=> {
+            return( 
+                    <div className="row" key={i}>
+                        <label>{category}</label>
+                    </div>
+                )})
         return(
             <div className="row">
                 <div className="col s12 m3">
@@ -116,12 +122,8 @@ class MainPage extends React.Component{
                             <div className="card-title blue-text darken-1">
                                 Preferences:
                             </div>
-                            <form action="#">
-                            
-                            
-                                <input type="checkbox" id="test5" />
-                                <label htmlFor="test5">German</label>
-                            
+                            <form>
+                                {categoryList}
                             </form>
                         </div>
                     </div>
