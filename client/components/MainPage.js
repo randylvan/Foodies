@@ -46,6 +46,8 @@ class MainPage extends React.Component{
 
 
     callToApi = () => {
+        if(this.state.toggle)
+            this.setState({toggle: !this.state.toggle})
         let {categories, zipCode} = this.props;
         //let {longitude, latitude} = this.props;
         let category = this.randomCategory(categories)
@@ -109,8 +111,10 @@ class MainPage extends React.Component{
                                         
                                         <a className="btn-floating blue"><i className="material-icons">thumb_up</i></a>
                                         <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
-                                        <span>
-                                        <a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>
+                                        {this.state.toggle ?
+                                             <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>not_interested</i></a></span> :
+                                            <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>    
+                                        }
                                 
                             </div>
                     </div>
