@@ -14,17 +14,18 @@ export const getCategories = () => {
 }
 
 export const toggleEnableCat = (id) => {
+  //Update the Categories collection for the id to be true or false
   return (dispatch) => {
     dispatch({type: 'TOGGLE_ENABLE_CAT', id})
   }
 }
 
-// // Rick: do I need a seperate function here?
-// export const setUserCategory = (title) => {
+// export const toggleEnableCat = (id) => {
 //   return (dispatch) => {
-//     dispatch({type: 'ADD_CAT_TO_USER', title})
+//     dispatch({type: 'TOGGLE_ENABLE_CAT', id})
 //   }
 // }
+
 
 export const setUserCategory = (id, title) => {
   return (dispatch) => {
