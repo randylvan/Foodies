@@ -7,7 +7,7 @@ import { refreshLogin } from '../actions/auth';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {restaurants:[], toggle: false}
+        this.state = {restaurants:[], toggle: false, number: []}
     }
 
     componentDidMount() {
@@ -18,17 +18,18 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
-            dispatch(refreshLogin(user));
+            
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
+
+            
         }).fail( err => {
             alert(JSON.stringify(err));
         });
 
     }
 
-    rand = () => {
-        let number = Math.floor(Math.random()* this.state.restaurants.length);
-        return number;
-    }
+    
 
 
     callToApi = () => {
@@ -38,16 +39,18 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
-            dispatch(refreshLogin(user));
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
+
         }).fail( err => {
             alert(JSON.stringify(err));
         });
     }
 
     toast = (e) => {
-        e.preventDefault();
+    e.preventDefault();
     this.setState({toggle: !this.state.toggle});
-    if (this.state.toggle === true){
+    if (this.state.toggle === false){
         return Materialize.toast('You have favorited', 4000);
     }
     else {
@@ -58,7 +61,7 @@ class MainPage extends React.Component{
     render() {
         let restaurants = this.state.restaurants.map( restaurant => {
             return( <div key={restaurant.id} className="card large grey lighten-4 hoverable">
-                        
+                            
                             <div className="card-image">
                                 <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://hd-wall-papers.com/images/wallpapers/image-not-available/image-not-available-17.jpg"} width="20%" height="20%"/>
                                 
@@ -82,7 +85,7 @@ class MainPage extends React.Component{
                             
                             <div className="card-action center-align" style={styles}>
                                         
-                                        <a className="btn-floating blue"><i className="material-icons">thumb_up</i></a>
+                                        <a className="btn-floating blue"><i className="medium material-icons">thumb_up</i></a>
                                         <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
                                         <span>
                                         <a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>
@@ -111,7 +114,7 @@ class MainPage extends React.Component{
                 </div>
                 
                 <div className="col s12 m6">
-                    {restaurants[this.rand()]}
+                    {restaurants[this.state.number]}
                 </div>
 
                 <div className="col s12 m3">
