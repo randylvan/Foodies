@@ -10,7 +10,6 @@
     "seed": "node ./models/seed.js"
   },
   "dependencies": {
-    "seed": "node ./models/seed.js",
     "autoprefixer": "^6.7.6",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
