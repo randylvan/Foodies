@@ -109,10 +109,19 @@ class MainPage extends React.Component{
       
         let categoryList = this.props.categories.map( (category, i )=> {
             return( 
-                    <div className="row" key={i}>
+                    <p>
+                        <input type="checkbox"/>
                         <label>{category}</label>
-                    </div>
+                    </p>
                 )})
+        let favoriteList = this.props.favorites.map( (favorite, i )=> {
+            return( 
+                    <p>
+                        <input type="checkbox" checked="checked"/>
+                        <label>{favorite}</label>
+                    </p>
+                )})
+
         return(
             <div className="row">
                 <div className="col s12 m3">
@@ -139,12 +148,7 @@ class MainPage extends React.Component{
                                 Favorites:
                             </div>
                             <form action="#">
-                                <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Indian</label></p>
-                                <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Italian</label></p>
-                                <input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Salvadoran</label>
+                                {favoriteList}
                             </form>
                         </div>
                     </div>
@@ -161,7 +165,8 @@ const styles = {
 
 const mapStateToProps = (state) => {
     let enabledCats = state.user.enabledCategories.map( enabled => enabled);
-    return {categories: enabledCats, zipCode: state.user.zipCode}
+    let favoriteList = state.user.favorites.map( fav => fav);
+    return {categories: enabledCats, zipCode: state.user.zipCode, favorites: favoriteList}
 }
 
 export default connect(mapStateToProps)(MainPage);
