@@ -24,8 +24,9 @@ class Category extends React.Component {
                                 <p>Description: {description}</p>
                             </div>
                             <div className="card-action white-text" style={{backgroundColor: '#b3b3b3'}}>
-                                <a onClick={this.toggleEnable} style={{color: '#0f488a'}}>
-                                    { this.props.enabled ? 'Unselect' : 'Select' }
+                                <a className={"btn-floating halfway-fab waves-effect waves-light " + myColorHue} onClick={this.toggleEnable} style={{color: '#0f488a'}}>
+                                    <i class="material-icons">{ this.props.enabled ? '-' : '+' }</i>
+                                    {/* { this.props.enabled ? 'Unselect' : 'Select' } */}
                                 </a>
                             </div>
                         </div>
