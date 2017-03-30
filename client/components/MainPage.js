@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {restaurants:[], toggle: false, position:[]}
+        this.state = {restaurants:[], toggle: false, position:[], number: []}
     }
 
     componentDidMount() {
@@ -24,6 +24,9 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
+
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -32,7 +35,7 @@ class MainPage extends React.Component{
 
     rand = () => {
         let number = Math.floor(Math.random()* this.state.restaurants.length);
-        return number;
+        this.setState({number: number});
     }
 
 
@@ -43,6 +46,8 @@ class MainPage extends React.Component{
 
 
     callToApi = () => {
+        if(this.state.toggle)
+            this.setState({toggle: !this.state.toggle})
         let {categories, zipCode} = this.props;
         //let {longitude, latitude} = this.props;
         let category = this.randomCategory(categories)
@@ -57,6 +62,8 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            let number = Math.floor(Math.random()* this.state.restaurants.length);
+            this.setState({ number: number});
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -66,6 +73,10 @@ class MainPage extends React.Component{
 
     }
     toast = () => {
+        this.setState({toggle: !this.state.toggle});
+        if (this.state.toggle == true) {
+            return Materialize.toast('You have unfavorited', 4000);
+        }
         return Materialize.toast('You have favorited', 4000);
     }
     
@@ -100,8 +111,10 @@ class MainPage extends React.Component{
                                         
                                         <a className="btn-floating blue"><i className="material-icons">thumb_up</i></a>
                                         <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
-                                        <span>
-                                        <a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>
+                                        {this.state.toggle ?
+                                             <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>not_interested</i></a></span> :
+                                            <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>    
+                                        }
                                 
                             </div>
                     </div>
@@ -109,10 +122,19 @@ class MainPage extends React.Component{
       
         let categoryList = this.props.categories.map( (category, i )=> {
             return( 
-                    <div className="row" key={i}>
+                    <p>
+                        <input type="checkbox"/>
                         <label>{category}</label>
-                    </div>
+                    </p>
                 )})
+        let favoriteList = this.props.favorites.map( (favorite, i )=> {
+            return( 
+                    <p>
+                        <input type="checkbox" checked="checked"/>
+                        <label>{favorite}</label>
+                    </p>
+                )})
+
         return(
             <div className="row">
                 <div className="col s12 m3">
@@ -129,7 +151,7 @@ class MainPage extends React.Component{
                 </div>
                 
                 <div className="col s12 m6">
-                    {restaurants[this.rand()]}
+                    {restaurants[this.state.number]}
                 </div>
 
                 <div className="col s12 m3">
@@ -139,12 +161,7 @@ class MainPage extends React.Component{
                                 Favorites:
                             </div>
                             <form action="#">
-                                <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Indian</label></p>
-                                <p><input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Italian</label></p>
-                                <input type="checkbox" id="test5" checked="checked"/>
-                                <label htmlFor="test5">Salvadoran</label>
+                                {favoriteList}
                             </form>
                         </div>
                     </div>
@@ -161,7 +178,8 @@ const styles = {
 
 const mapStateToProps = (state) => {
     let enabledCats = state.user.enabledCategories.map( enabled => enabled);
-    return {categories: enabledCats, zipCode: state.user.zipCode}
+    let favoriteList = state.user.favorites.map( fav => fav);
+    return {categories: enabledCats, zipCode: state.user.zipCode, favorites: favoriteList}
 }
 
 export default connect(mapStateToProps)(MainPage);
