@@ -14,7 +14,8 @@ class Category extends React.Component {
 
     render () {
             let {description, title, enabled, _id} = this.props;
-            let myColorHue = this.props.enabled ? 'green darken-4 ' : 'blue darken-3 ';
+            // let myColorHue = this.props.enabled ? 'green darken-4 ' : 'blue darken-3 ';
+            let myColorHue = this.props.enabled ? 'deep-orange darken-3 ' : 'blue darken-3 ';
             return (
                     <li key={_id} className="collection-item">
                         <div className={'card ' + myColorHue }>
