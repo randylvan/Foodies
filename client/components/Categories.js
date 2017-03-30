@@ -12,7 +12,12 @@ class Categories extends React.Component {
 
     render () {
         let enabledCategories = this.props.user.enabledCategories || []
+        // Sort the categories
+        let cats = this.props.categories;
+        cats.sort((a, b) => a.description.localeCompare(b.description));
+
         let categoryList = this.props.categories.map( category => {
+            // console.log("sort: " + category.title);
             if (enabledCategories.includes(category.title)) {
                 return (
                     <div key={category._id} className="col s12 m4 l4">
