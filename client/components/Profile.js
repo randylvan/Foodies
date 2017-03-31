@@ -9,19 +9,6 @@ class Profile extends React.Component{
 
     toggleEdit = () => {
         this.setState({edit: !this.state.edit});
-        // if(this.state.edit === false){
-        //     $.ajax({
-        //         url: 'api/auth/update',
-        //         type: 'POST',
-        //         data: {
-        //                 firstName: firstName.value,
-        //                 lastName: lastName.value,
-        //                 zipCode: zipCode.value,
-        //               }
-        //     }).done( user => {
-        //         this.props.dispatch(setUser(user))
-        //     })
-        // }
     }
     handleFormChange = (e) =>{
         e.preventDefault();
@@ -48,6 +35,13 @@ class Profile extends React.Component{
             console.log(err);
         })
     }
+
+    resetInfo = (e) => {
+        e.preventDefault();
+        let{ firstName, lastName, username, zipCode } = this.state.user;
+        this.setState({firstName, lastName, username, zipCode})
+        this.toggleEdit();
+    }
     
 
 
@@ -66,7 +60,7 @@ class Profile extends React.Component{
                         <input defaultValue={lastName} ref="lastName"onChange={this.handleFormChange} />
                         <h5>Zip Code</h5>
                         <input defaultValue={zipCode} ref="zipCode" onChange={this.handleFormChange} />
-                        <button className="btn orange">Cancel</button>
+                        <button className="btn orange" onClick={this.resetInfo}>Cancel</button>
                         <button className="btn" onClick={this.updateInfo}>Submit</button>
                     </form>
                 </div>
