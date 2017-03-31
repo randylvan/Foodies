@@ -49,11 +49,10 @@ nav .nav-wrapper {
   z-index: 9999;
 }
 
-nav {
-  background-color: transparent !important;
-  z-index: 9999;
-}
-
 i {
   cursor: pointer;
+}
+
+.bgF {
+  background-color: #ff3000 !important;
 }

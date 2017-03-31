@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
+const Loader = require('react-loader');
 
 
 
 class MainPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {restaurants:[], toggle: false, position:[], number: []}
+        this.state = {restaurants:[], toggle: false, position:[], number: [], loaded: false}
     }
 
     componentDidMount() {
@@ -24,6 +25,7 @@ class MainPage extends React.Component{
         }).done( restaurants => {
             // console.log(restaurants)
             this.setState({ restaurants });
+            this.setState({ loaded: !this.state.loaded});   
             let number = Math.floor(Math.random()* this.state.restaurants.length);
             this.setState({ number: number});
 
@@ -87,6 +89,7 @@ class MainPage extends React.Component{
                 <div key={restaurant.id} className="card large grey lighten-4 hoverable">
                         
                             <div className="card-image">
+                                
                                 <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://hd-wall-papers.com/images/wallpapers/image-not-available/image-not-available-17.jpg"} width="20%" height="20%"/>
                                 
                             </div>
@@ -149,11 +152,11 @@ class MainPage extends React.Component{
                         </div>
                     </div>
                 </div>
-                
-                <div className="col s12 m6">
-                    {restaurants[this.state.number]}
-                </div>
-
+                <Loader loaded={this.state.loaded}>
+                    <div className="col s12 m6">
+                        {restaurants[this.state.number]}
+                    </div>
+                </Loader>
                 <div className="col s12 m3">
                     <div className="card">
                         <div className="card-content">
