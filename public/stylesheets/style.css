@@ -56,3 +56,20 @@ i {
 .bgF {
   background-color: #ff3000 !important;
 }
+.card.small .card-action, .card.medium .card-action, .card.large .card-action {
+  max-height: 70px !important;
+  position: inherit !important;
+  display: flex;
+  align-content: center;
+}
+.modal h4 {
+  margin-top: 35px !important;
+}
+.modal-actions {
+  width: 237px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}

@@ -62,7 +62,7 @@ class MainPage extends React.Component{
                 zipCode: zipCode
             }
         }).done( restaurants => {
-            // console.log(restaurants)
+            console.log(restaurants)
             this.setState({ restaurants });
             let number = Math.floor(Math.random()* this.state.restaurants.length);
             this.setState({ number: number});
@@ -96,11 +96,15 @@ class MainPage extends React.Component{
     render() {
         let modals = this.state.restaurants.map( restaurant => {
             return( 
-                <div key={restaurant.id} className="">
-                    <h4 className="center-align">{restaurant.name}</h4>
-
-                    <div className="modal-footer center-align">
-                    <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+                <div key={restaurant.id} className="container-fluid">
+                    <div className="row">
+                        <h4 className="center-align red-text darken-3">{restaurant.name}</h4>
+                        <h6 className="center-align"><b>{restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zip_code}</b></h6>
+                        <div className="modal-actions center-align">
+                            <a href={`https://www.google.com/maps/place/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
+                            <a href={`tel:${restaurant.display_phone}`}><i className="medium material-icons black-text">call</i></a>
+                        </div>
+                        
                     </div>
                 </div>
                 )});
@@ -108,7 +112,7 @@ class MainPage extends React.Component{
             return( 
                 <div key={restaurant.id} className="card large grey lighten-4 hoverable">
                     <div className="card-image">
-                        <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "../../public/heythere.png"} width="20%" height="20%"/>       
+                        <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://images1.wikia.nocookie.net/__cb20121204182919/yogscast/images/1/19/Unavailable_Pic.gif"} width="20%" height="20%"/>       
                     </div>
                     <div className="card-content">
                         <span className="card-title center-align">
@@ -116,11 +120,10 @@ class MainPage extends React.Component{
                         </span>
                         <div className="center-align">
                             {restaurant.rating < 1.9 ? <i className="small orange-text accent-3 material-icons">star</i> : restaurant.rating <= 2.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating <= 3.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating >= 4 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span> : null}
+                             <br/><b>{ `${restaurant.categories[0].title}`}</b><br/>
+                             {`${restaurant.location.address1 ? restaurant.location.address1 : null}, ${restaurant.location.city}` }
                         </div>
-                        <div className="center-align">
-                            { `${restaurant.categories[0].title}`}
-                            {/* <Modal restaurant={restaurant.name}/> */}
-                        </div>
+                        
                     </div>
                     <div className="card-action center-align" style={styles}>          
                         <a className="btn-floating blue" ref="modal" onClick={this.modal}><i className="material-icons">thumb_up</i></a>
@@ -152,40 +155,42 @@ class MainPage extends React.Component{
                 )})
 
         return(
-            <div className="row">
-                <Loader loaded={this.state.loaded} color="red">
-                    <div className="col s12 m3">
-                        <div className="card">
-                            <div className="card-content">
-                                <div className="card-title blue-text darken-1">
-                                    Preferences:
+            <div className="container-fluid">
+                <div className="row">
+                    <Loader loaded={this.state.loaded} color="red">
+                        <div className="col s12 m3">
+                            <div className="card">
+                                <div className="card-content">
+                                    <div className="card-title blue-text darken-1">
+                                        Preferences:
+                                    </div>
+                                    <form>
+                                        {categoryList}
+                                    </form>
                                 </div>
-                                <form>
-                                    {categoryList}
-                                </form>
                             </div>
                         </div>
-                    </div>
+                    
+                        <div className="col s12 m6">
+                            {restaurants[this.state.number]}
+                        </div>
                 
-                    <div className="col s12 m6">
-                        {restaurants[this.state.number]}
-                    </div>
-               
-                    <div className="col s12 m3">
-                        <div className="card">
-                            <div className="card-content">
-                                <div className="card-title orange-text darken-3">
-                                    Favorites:
+                        <div className="col s12 m3">
+                            <div className="card">
+                                <div className="card-content">
+                                    <div className="card-title orange-text darken-3">
+                                        Favorites:
+                                    </div>
+                                    <form action="#">
+                                        {favoriteList}
+                                    </form>
                                 </div>
-                                <form action="#">
-                                    {favoriteList}
-                                </form>
-                            </div>
-                        </div> 
+                            </div> 
+                        </div>
+                </Loader>
+                    <div id="modal1" className="modal">
+                        {modals[this.state.number]}
                     </div>
-            </Loader>
-                <div id="modal1" className="modal">
-                    {modals[this.state.number]}
                 </div>
             </div>
         )
