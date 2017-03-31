@@ -75,6 +75,54 @@ router.put('/addUserCat', (req, res) => {
  });
 });
 
+router.put('/setFavorites', (req, res) => {
+  let {id, favorite, link} = req.body;
+  User.findById(id, (err, user) => {
+    let currentFavs = user.favorites;
+    let index = -1;
+    for(let i = 0; i < currentFavs.length; i++){
+      if(currentFavs[i].title === favorite){
+        index = i;
+        break;
+      }
+    }
+    if(index != -1){
+      currentFavs.splice(index, 1)
+    }else{
+      currentFavs.push({title: favorite, url: link})
+    }
+    user.favorites = currentFavs;
+    user.save( (err, user) => {
+      if(err)
+        return("Didnt work")
+      res.json(user);
+    })
+
+
+
+    
+    // if( currentFavs.includes({title: favorite}))
+    // {
+    //   let index = currentFavs.indexOf({title: favorite})
+    //   console.log("hit this")
+    //   console.log(index)
+    //   currentFavs.splice(index, 1);
+    //   user.favorites = currentFavs;
+    //   user.save( (err, user) => {
+    //     res.json(user)
+    //   });
+
+    // }else {
+    //   currentFavs.push({title: favorite, url: link});
+    //   user.favorites = currentFavs;
+    //   user.save( (err, user) => {
+    //     res.json(user)
+    //   });
+    // }
+  })
+})
+
+
 router.get('/getCurrUserCats', (req,res) => {
   let id = req.body.id;
   User.findById(id, (err, user) => {
