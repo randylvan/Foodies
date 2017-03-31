@@ -13,6 +13,8 @@ const user = (state = {}, action) => {
     case 'GET_CATS_FOR_USER':
       state.enabledCategories = [...state.enabledCategories, action.title];
       return state;
+    case 'ADD_FAVORITE':
+      return {...state, favorites: action.favorites};
     default:
       return state;
   }

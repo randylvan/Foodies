@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setFavorites } from '../actions/auth';
+import {goToFavorites} from '../actions/auth';
 
 
 class Favorites extends React.Component {
@@ -9,6 +11,15 @@ class Favorites extends React.Component {
         console.log(this.props.favorites)
     }
 
+    goToFavorite = (link) => {
+     window.open(link)
+        
+    }
+    deleteFavorite = (favorite) => {
+
+        this.props.dispatch(setFavorites(this.props.id, favorite))
+    }
+
     render() {
         //this.setState({favorites: this.props.favorites})
         let favoriteList = this.props.favorites.map( (favorite, i) => {
@@ -16,9 +27,12 @@ class Favorites extends React.Component {
                 <div key={i}>
                     <div className="col s12 m4 l4">
                         <div className="card blue">
-                            <span className="card-title">{favorite}</span>
                             <div className="card-content">
-                                <p>Hello there</p>
+                            <span className="card-title center">{favorite.title}</span>
+                            </div>
+                            <div className="card-action">
+                                <button className="btn" onClick={() => this.goToFavorite(favorite.url)}>Look</button>
+                                <button className="btn orange" onClick={() => this.deleteFavorite(favorite.title)}>Delete</button>
                             </div>
                         </div>
                     </div>
@@ -35,7 +49,7 @@ class Favorites extends React.Component {
 
 const mapStateToProps= (state) => {
     let favoritesSaved = state.user.favorites.map(fav => fav)
-    return  {favorites: favoritesSaved}
+    return  {favorites: favoritesSaved, id: state.user._id,  zipCode: state.user.zipCode}
 }
 
 export default connect(mapStateToProps)(Favorites);
