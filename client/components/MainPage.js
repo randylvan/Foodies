@@ -101,7 +101,7 @@ class MainPage extends React.Component{
                         <h4 className="center-align red-text darken-3">{restaurant.name}</h4>
                         <h6 className="center-align"><b>{restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zip_code}</b></h6>
                         <div className="modal-actions center-align">
-                            <a href={`https://www.google.com/maps/place/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
+                            <a href={`https://www.google.com/maps/dir/Current+Location/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
                             <a href={`tel:${restaurant.display_phone}`}><i className="medium material-icons black-text">call</i></a>
                         </div>
                         
