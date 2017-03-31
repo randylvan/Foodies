@@ -30,4 +30,21 @@ const setUser = (user = {}) => {
   return { type: 'USER', user }
 }
 
+export const setFavorites = (id, favorite, link) => {
+  return (dispatch) => {
+    $.ajax({
+      url: '/api/auth/setFavorites',
+      type:'PUT',
+      data: {
+        favorite, id, link
+      }
+    }).done( user => {
+      dispatch({type: 'ADD_FAVORITE', favorites: user.favorites})
+    } )
+  }
+}
+
+
+
+
 

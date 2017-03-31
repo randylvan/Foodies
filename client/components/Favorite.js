@@ -13,7 +13,7 @@ class Favorite extends React.Component {
                 <div className="col s12 m4 l4">
                     <div className="card">
                         <div className="card-image">
-                        <span className="card-title">{title}</span>
+                        <span className="card-title center">{title}</span>
                         </div>
                         <div className="card-content">
                             <p>Hello there</p>

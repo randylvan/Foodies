@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 const Loader = require('react-loader');
+import {setFavorites} from '../actions/auth'
+
 
 
 
@@ -71,11 +73,15 @@ class MainPage extends React.Component{
         });
     }
 
-    addFavorite = () => {
+    addFavorite = (favorite, link) => {
+        let{ id } = this.props;
+        this.props.dispatch(setFavorites( id , favorite, link))
+        console.log(favorite);
 
     }
-    toast = () => {
+    toast = (title, link) => {
         this.setState({toggle: !this.state.toggle});
+        this.addFavorite(title, link);
         if (this.state.toggle == true) {
             return Materialize.toast('You have unfavorited', 4000);
         }
@@ -115,26 +121,27 @@ class MainPage extends React.Component{
                                         <a className="btn-floating blue"><i className="material-icons">thumb_up</i></a>
                                         <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
                                         {this.state.toggle ?
-                                             <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>not_interested</i></a></span> :
-                                            <span><a className="btn-floating red"><i className="material-icons" onClick={this.toast}>star</i></a></span>    
+                                             <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url) }>not_interested</i></a></span> :
+                                            <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url)}>star</i></a></span>    
                                         }
                                 
                             </div>
                     </div>
                     )});
       
-        let categoryList = this.props.categories.map( (category, i )=> {
+        let categoryList = this.props.categories.map( (category, i ) => {
+            let displayedCategory = category.toUpperCase();
             return( 
-                    <p>
+                    <p key ={i}>
                         <input type="checkbox"/>
-                        <label>{category}</label>
+                        <label>{displayedCategory}</label>
                     </p>
                 )})
         let favoriteList = this.props.favorites.map( (favorite, i )=> {
             return( 
-                    <p>
+                    <p key={i}>
                         <input type="checkbox" checked="checked"/>
-                        <label>{favorite}</label>
+                        <label>{favorite.title}</label>
                     </p>
                 )})
 
@@ -182,7 +189,7 @@ const styles = {
 const mapStateToProps = (state) => {
     let enabledCats = state.user.enabledCategories.map( enabled => enabled);
     let favoriteList = state.user.favorites.map( fav => fav);
-    return {categories: enabledCats, zipCode: state.user.zipCode, favorites: favoriteList}
+    return {categories: enabledCats, zipCode: state.user.zipCode, favorites: favoriteList, id: state.user._id}
 }
 
 export default connect(mapStateToProps)(MainPage);
