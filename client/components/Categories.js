@@ -42,6 +42,7 @@ class Categories extends React.Component {
         return(
             <div className="container center-align">
                 <div className="row">
+                    <h3>Categories</h3>
                         <ul>
                             {categoryList}
                         </ul>
