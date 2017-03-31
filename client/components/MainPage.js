@@ -124,6 +124,7 @@ class MainPage extends React.Component{
                                              <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url) }>not_interested</i></a></span> :
                                             <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url)}>star</i></a></span>    
                                         }
+
                                 
                             </div>
                     </div>
