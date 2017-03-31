@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 const Loader = require('react-loader');
-import {setFavorites} from '../actions/auth'
+import {setFavorites} from '../actions/auth';
 
 
 
@@ -147,6 +147,7 @@ class MainPage extends React.Component{
 
         return(
             <div className="row">
+                <Loader loaded={this.state.loaded} color="red">
                 <div className="col s12 m3">
                     <div className="card">
                         <div className="card-content">
@@ -159,11 +160,11 @@ class MainPage extends React.Component{
                         </div>
                     </div>
                 </div>
-                <Loader loaded={this.state.loaded}>
+                
                     <div className="col s12 m6">
                         {restaurants[this.state.number]}
                     </div>
-                </Loader>
+               
                 <div className="col s12 m3">
                     <div className="card">
                         <div className="card-content">
@@ -175,7 +176,9 @@ class MainPage extends React.Component{
                             </form>
                         </div>
                     </div>
+                    
                 </div>
+                </Loader>
             </div>
         )
     }
