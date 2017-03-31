@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 const Loader = require('react-loader');
 import {setFavorites} from '../actions/auth';
-
-
+import Modal from './Modal';
 
 
 class MainPage extends React.Component{
@@ -13,6 +12,7 @@ class MainPage extends React.Component{
     }
 
     componentDidMount() {
+        $('#modal1').modal();
         let {categories, zipCode} = this.props;
         let category = this.randomCategory(categories);
         console.log(category)
@@ -50,8 +50,6 @@ class MainPage extends React.Component{
 
 
     callToApi = () => {
-        if(this.state.toggle)
-            this.setState({toggle: !this.state.toggle})
         let {categories, zipCode} = this.props;
         //let {longitude, latitude} = this.props;
         let category = this.randomCategory(categories)
@@ -68,6 +66,8 @@ class MainPage extends React.Component{
             this.setState({ restaurants });
             let number = Math.floor(Math.random()* this.state.restaurants.length);
             this.setState({ number: number});
+            if(this.state.toggle)
+            this.setState({toggle: !this.state.toggle})
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -87,48 +87,53 @@ class MainPage extends React.Component{
         }
         return Materialize.toast('You have favorited', 4000);
     }
-    
+
+    modal = () => {
+       
+         $('#modal1').modal('open');
+    }
 
     render() {
+        let modals = this.state.restaurants.map( restaurant => {
+            return( 
+                <div key={restaurant.id} className="">
+                    <h4 className="center-align">{restaurant.name}</h4>
+
+                    <div className="modal-footer center-align">
+                    <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+                    </div>
+                </div>
+                )});
         let restaurants = this.state.restaurants.map( restaurant => {
             return( 
                 <div key={restaurant.id} className="card large grey lighten-4 hoverable">
-                        
-                            <div className="card-image">
-                                
-                                <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://hd-wall-papers.com/images/wallpapers/image-not-available/image-not-available-17.jpg"} width="20%" height="20%"/>
-                                
-                            </div>
-
-                            <div className="card-content">
-                                <span className="card-title center-align">
-                                    {restaurant.name}
-                                </span>
-
-                                <div className="center-align">
-                                    {restaurant.rating < 1.9 ? <i className="small orange-text accent-3 material-icons">star</i> : restaurant.rating <= 2.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating <= 3.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating >= 4 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span> : null}
-                                </div>
-
-                                <div className="center-align">
-                                    
-                                    { `${restaurant.categories[0].title}`}
-                                    
-                                </div>
-                            </div>
-                            
-                            <div className="card-action center-align" style={styles}>
-                                        
-                                        <a className="btn-floating blue"><i className="material-icons">thumb_up</i></a>
-                                        <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
-                                        {this.state.toggle ?
-                                             <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url) }>not_interested</i></a></span> :
-                                            <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url)}>star</i></a></span>    
-                                        }
-
-                                
-                            </div>
+                    <div className="card-image">
+                        <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "../../public/heythere.png"} width="20%" height="20%"/>       
                     </div>
-                    )});
+                    <div className="card-content">
+                        <span className="card-title center-align">
+                            {restaurant.name}
+                        </span>
+                        <div className="center-align">
+                            {restaurant.rating < 1.9 ? <i className="small orange-text accent-3 material-icons">star</i> : restaurant.rating <= 2.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating <= 3.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating >= 4 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span> : null}
+                        </div>
+                        <div className="center-align">
+                            { `${restaurant.categories[0].title}`}
+                            {/* <Modal restaurant={restaurant.name}/> */}
+                        </div>
+                    </div>
+                    <div className="card-action center-align" style={styles}>          
+                        <a className="btn-floating blue" ref="modal" onClick={this.modal}><i className="material-icons">thumb_up</i></a>
+                        <a className="btn-floating black" onClick={this.callToApi}><i className="material-icons">thumb_down</i></a>
+                        {this.state.toggle ?
+                                <span>
+                                <a className="btn-floating red">
+                                <i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url) }>not_interested</i></a>
+                                </span> : <span><a className="btn-floating red"><i className="material-icons" onClick={() => this.toast(restaurant.name, restaurant.url)}>star</i></a></span>    
+                        }     
+                    </div>
+                </div>
+                )});
       
         let categoryList = this.props.categories.map( (category, i ) => {
             let displayedCategory = category.toUpperCase();
@@ -149,37 +154,39 @@ class MainPage extends React.Component{
         return(
             <div className="row">
                 <Loader loaded={this.state.loaded} color="red">
-                <div className="col s12 m3">
-                    <div className="card">
-                        <div className="card-content">
-                            <div className="card-title blue-text darken-1">
-                                Preferences:
+                    <div className="col s12 m3">
+                        <div className="card">
+                            <div className="card-content">
+                                <div className="card-title blue-text darken-1">
+                                    Preferences:
+                                </div>
+                                <form>
+                                    {categoryList}
+                                </form>
                             </div>
-                            <form>
-                                {categoryList}
-                            </form>
                         </div>
                     </div>
-                </div>
                 
                     <div className="col s12 m6">
                         {restaurants[this.state.number]}
                     </div>
                
-                <div className="col s12 m3">
-                    <div className="card">
-                        <div className="card-content">
-                            <div className="card-title orange-text darken-3">
-                                Favorites:
+                    <div className="col s12 m3">
+                        <div className="card">
+                            <div className="card-content">
+                                <div className="card-title orange-text darken-3">
+                                    Favorites:
+                                </div>
+                                <form action="#">
+                                    {favoriteList}
+                                </form>
                             </div>
-                            <form action="#">
-                                {favoriteList}
-                            </form>
-                        </div>
+                        </div> 
                     </div>
-                    
+            </Loader>
+                <div id="modal1" className="modal">
+                    {modals[this.state.number]}
                 </div>
-                </Loader>
             </div>
         )
     }
