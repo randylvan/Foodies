@@ -166,8 +166,6 @@ class MainPage extends React.Component{
                                     </div>
                                     <form>
                                         {categoryList}
-                                        {/* {console.log(typeof this.props.categories.title)} */}
-                                        {/* {typeof this.props.categories.title === "undefined" ? restaurants[this.state.number] : <h4 className=" center-align deep-orange-text text-darken-3 ">Please Select Categories!</h4>} */}
                                     </form>
                                 </div>
                             </div>
@@ -175,6 +173,8 @@ class MainPage extends React.Component{
                     
                         <div className="col s12 m6">
                             {restaurants[this.state.number]}
+                            {/* {console.log(typeof this.props.categories.title)} */}
+                            {/* {typeof this.props.categories.title === "undefined" ? restaurants[this.state.number] : <h4 className=" center-align deep-orange-text text-darken-3 ">Please Select Categories!</h4>} */}
                         </div>
                 
                         <div className="col s12 m3">
