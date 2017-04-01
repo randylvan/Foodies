@@ -50,10 +50,12 @@ class Profile extends React.Component{
         let {firstName, lastName, zipCode, username} = this.state.user;
         if(this.state.edit){
             return(
-                <div>
-                    <form>
-                        <h5>Email</h5>
-                        <input defaultValue={username} ref="username" onChange={this.handleFormChange} />
+                <div className="row">
+                    <form className="col s12">
+                        <div className="row">
+                            <h5>Email</h5>
+                            <input defaultValue={username} ref="username" onChange={this.handleFormChange} />
+                        </div>
                         <h5>First Name</h5>
                         <input defaultValue={firstName} ref="firstName" onChange={this.handleFormChange} />
                         <h5>last Name</h5>
@@ -70,14 +72,21 @@ class Profile extends React.Component{
             return(
                 <div>
                     <div className="row">
-                        <h5>Email</h5>
-                        <span>{username}</span>
-                        <h5>First Name</h5>
-                        <span>{firstName}</span>
-                        <h5>Last Name</h5>
-                        <span>{lastName}</span>
-                        <h5>Zip Code</h5>
-                        <span>{zipCode}</span>
+                        <div className="col s12 m12 l12">
+                            <h5>Email:</h5> {username}
+                        </div>
+                        <div className="col s12 m12 l12">
+                            <h5>First Name</h5>
+                            <span>{firstName}</span>
+                        </div>
+                        <div className="col s12 m12 l12">
+                            <h5>Last Name</h5>
+                            <span>{lastName}</span>
+                        </div>
+                        <div className="col s12 m12 l12">
+                            <h5>Zip Code</h5>
+                            <span>{zipCode}</span>
+                        </div>
                     </div>
                     <button className="btn" onClick={this.toggleEdit}>Edit</button>
                 </div>
