@@ -114,6 +114,7 @@ class MainPage extends React.Component{
                     <div className="card-image">
                         <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://images1.wikia.nocookie.net/__cb20121204182919/yogscast/images/1/19/Unavailable_Pic.gif"} width="20%" height="20%"/>       
                     </div>
+                    {/* {typeof this.props.categories.title === "undefined" ? <h3>Not HERE</h3> : <h3>HERE</h3>} */}
                     <div className="card-content">
                         <span className="card-title center-align">
                             {restaurant.name}
