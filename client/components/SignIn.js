@@ -25,12 +25,12 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2 className="center">{this.props.route.title}</h2>
+      <div className="container">
+        <h2 className="center deep-orange-text darken-4">{this.props.route.title}</h2>
           <form onSubmit={this.handleSubmit}>
-            <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
-            <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
-           <button className="btn">Sign In</button>
+            <input className="blue-text text-darken-3" type="email" required={true} ref={ n => this.email = n } placeholder="email" />
+            <input className="blue-text text-darken-3" type="password" required={true} ref={n => this.password = n } placeholder="password" />
+           <button className="btn blue darken-3">Sign In</button>
          </form>
       </div>
     )

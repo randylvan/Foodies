@@ -31,14 +31,14 @@ class SignUp extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col s12 m6 l6">
-            <h2 className="center">{this.props.route.title}</h2>
+            <h2 className="center deep-orange-text darken-4">{this.props.route.title}</h2>
               <form onSubmit={this.handleSubmit}>
                 <input type="email" required={true} ref={ n => this.email = n } placeholder="email" />
                 <input type="password" required={true} ref={n => this.password = n } placeholder="password" />
                 <input type="text" ref={n => this.firstName = n}  placeholder="First Name"/>
                 <input type="text" ref={n => this.lastName = n} placeholder="Last Name"/>
                 <input type="text" ref={n => this.zipCode = n} pattern="[0-9]{5}" placeholder="Zip Code"/>
-              <button className="btn red">Sign Up</button>
+              <button className="btn blue darken-3">Sign Up</button>
             </form>
           </div> 
           <div>
