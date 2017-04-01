@@ -123,6 +123,10 @@ class MainPage extends React.Component{
                              <br/><b>{ `${restaurant.categories[0].title}`}</b><br/>
                              {`${restaurant.location.address1 ? restaurant.location.address1 : null}, ${restaurant.location.city}` }
                         </div>
+                        <div className="center-align">
+                            {/* {typeof this.props.categories.title === "undefined" ? restaurant.categories[0].title : <h4 className=" center-align deep-orange-text text-darken-3 ">Please Select Categories!</h4>} */}
+                            {/* {restaurant.categories[0].title} */}
+                        </div>
                         
                     </div>
                     <div className="card-action center-align" style={styles}>          
