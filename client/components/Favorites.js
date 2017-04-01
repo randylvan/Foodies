@@ -26,13 +26,13 @@ class Favorites extends React.Component {
             return(
                 <div key={i}>
                     <div className="col s12 m4 l4">
-                        <div className="card blue">
+                        <div className="card blue darken-3">
                             <div className="card-content">
-                            <span className="card-title center">{favorite.title}</span>
+                            <span className="white-text card-title center">{favorite.title}</span>
                             </div>
-                            <div className="card-action">
-                                <button className="btn" onClick={() => this.goToFavorite(favorite.url)}>Look</button>
-                                <button className="btn orange" onClick={() => this.deleteFavorite(favorite.title)}>Delete</button>
+                            <div className="card-action white-text" style={{backgroundColor: '#b3b3b3'}}>
+                                <button className="btn blue darken-4" onClick={() => this.goToFavorite(favorite.url)}>Look</button>
+                                <button className="btn deep-orange darken-3" onClick={() => this.deleteFavorite(favorite.title)}>Delete</button>
                             </div>
                         </div>
                     </div>

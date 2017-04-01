@@ -73,3 +73,12 @@ i {
   justify-content: space-around;
   margin-top: 15px;
 }
+/*.card {
+  height: auto;
+}
+.card .card-content {
+  height: auto;
+}
+.card .card-action {
+  position: relative;
+}*/

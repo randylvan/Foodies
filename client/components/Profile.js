@@ -53,17 +53,23 @@ class Profile extends React.Component{
                 <div className="row">
                     <form className="col s12">
                         <div className="row">
-                            <h5>Email</h5>
-                            <input defaultValue={username} ref="username" onChange={this.handleFormChange} />
+                            <h5 className="blue-text text-darken-3">Email</h5>
+                            <input className="blue-text text-darken-3" defaultValue={username} ref="username" onChange={this.handleFormChange} />
                         </div>
-                        <h5>First Name</h5>
-                        <input defaultValue={firstName} ref="firstName" onChange={this.handleFormChange} />
-                        <h5>last Name</h5>
-                        <input defaultValue={lastName} ref="lastName"onChange={this.handleFormChange} />
-                        <h5>Zip Code</h5>
-                        <input defaultValue={zipCode} ref="zipCode" onChange={this.handleFormChange} />
-                        <button className="btn orange" onClick={this.resetInfo}>Cancel</button>
-                        <button className="btn" onClick={this.updateInfo}>Submit</button>
+                        <div className="row">
+                            <h5 className="blue-text text-darken-3">First Name</h5>
+                            <input className="blue-text text-darken-3" defaultValue={firstName} ref="firstName" onChange={this.handleFormChange} />
+                        </div>
+                        <div className="row">
+                            <h5 className="blue-text text-darken-3">last Name</h5>
+                            <input className="blue-text text-darken-3" defaultValue={lastName} ref="lastName"onChange={this.handleFormChange} />
+                        </div>
+                        <div className="row">
+                            <h5 className="blue-text text-darken-3">Zip Code</h5>
+                            <input className="blue-text text-darken-3" defaultValue={zipCode} ref="zipCode" onChange={this.handleFormChange} />
+                            <button className="btn deep-orange darken-3" onClick={this.resetInfo}>Cancel</button>
+                            <button className="btn blue darken-4" onClick={this.updateInfo}>Submit</button>
+                        </div>
                     </form>
                 </div>
 
@@ -72,23 +78,20 @@ class Profile extends React.Component{
             return(
                 <div>
                     <div className="row">
-                        <div className="col s12 m12 l12">
-                            <h5>Email:</h5> {username}
+                        <div className="col s12 m10 l10">
+                            <h5 className="blue-text text-darken-3">Email: {username}</h5>
+                        </div>
+                        <div className="col s12 m10 l10">
+                            <h5 className="blue-text text-darken-3">First Name: {firstName}</h5>
                         </div>
                         <div className="col s12 m12 l12">
-                            <h5>First Name</h5>
-                            <span>{firstName}</span>
+                            <h5 className="blue-text text-darken-3">Last Name: {lastName}</h5>
                         </div>
                         <div className="col s12 m12 l12">
-                            <h5>Last Name</h5>
-                            <span>{lastName}</span>
-                        </div>
-                        <div className="col s12 m12 l12">
-                            <h5>Zip Code</h5>
-                            <span>{zipCode}</span>
+                            <h5 className="blue-text text-darken-3">Zip Code: {zipCode}</h5>
                         </div>
                     </div>
-                    <button className="btn" onClick={this.toggleEdit}>Edit</button>
+                    <button className="btn blue darken-3" onClick={this.toggleEdit}>Edit</button>
                 </div>
             )
         }
