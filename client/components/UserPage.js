@@ -1,6 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import Favorites from './Favorites';
+import YelpMap from './YelpMap';
 
 class UserPage extends React.Component{
     state = {enableEdit: false}
@@ -24,6 +25,9 @@ class UserPage extends React.Component{
                 </div>
                 <div className="row">
                     <Favorites/>
+                </div>
+                <div className="row">
+                    <YelpMap/>
                 </div>
 
             </div>
