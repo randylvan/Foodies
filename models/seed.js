@@ -72,8 +72,8 @@ const data = [
             "enabled": false
         },
         {
-            "description": "Viettitlese",
-            "title": "viettitlese",
+            "description": "Vietnamese",
+            "title": "vietnamese",
             "enabled": false
         },
         {
