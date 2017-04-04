@@ -89,7 +89,7 @@ class MainPage extends React.Component{
 
   
   render() {
-        if (typeof this.state.restaurants[0] !== "undefined") 
+        if (typeof this.props.categories[0] !== "undefined") 
         {
             let modals = this.state.restaurants.map( restaurant => {
                 return( 
