@@ -9,7 +9,7 @@ class LandingPage extends React.Component {
     <div>
         
         <div className="site-wrapper">
-        <div className="img"></div>
+      {/*<div className="img"></div>*/}
       <div className="site-wrapper-inner">
 
         <div className="cover-container">
