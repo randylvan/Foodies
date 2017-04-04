@@ -66,7 +66,7 @@ class App extends React.Component {
       <div>
         <nav className="container-fluid deep-orange darken-3">
           <div className="nav-wrapper nav-bar">
-            <a href="#!" className="brand-logo"></a>
+            <a href="#!" className="brand-logo"><img className="image-logo" src="transFoodie.png"/></a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               { this.links() }
