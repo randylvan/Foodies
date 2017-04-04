@@ -4,6 +4,8 @@ const Loader = require('react-loader');
 import {setFavorites} from '../actions/auth';
 import Modal from './Modal';
 import FaCutlery from 'react-icons/lib/fa/cutlery';
+import FaStar from 'react-icons/lib/fa/star';
+import { Link } from 'react-router';
 
 class MainPage extends React.Component{
     constructor(props){
@@ -71,8 +73,9 @@ class MainPage extends React.Component{
     addFavorite = (favorite, link) => {
         let{ id } = this.props;
         this.props.dispatch(setFavorites( id , favorite, link))
-
+        
     }
+
     toast = (title, link) => {
         this.setState({toggle: !this.state.toggle});
         this.addFavorite(title, link);
@@ -96,7 +99,7 @@ class MainPage extends React.Component{
                     <div key={restaurant.id} className="container-fluid deep-orange darken-3">
                         <div className="row">
                             <h4 className="center-align white-text">{restaurant.name}</h4>
-                            <h6 className="center-align"><b>{restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zip_code}</b></h6>
+                            <h6 className="center-align"><b>{restaurant.location.address1 == null ? '' : restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zipCode}</b></h6>
                             <div className="modal-actions center-align">
                                 <a href={`https://www.google.com/maps/dir/Current+Location/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
                                 <a href={`tel:${restaurant.display_phone}`}><i className="medium material-icons black-text">call</i></a>
@@ -138,15 +141,15 @@ class MainPage extends React.Component{
             let categoryList = this.props.categories.map( (category, i ) => {
                 let displayedCategory = category.toUpperCase();
                 return( 
-                        <p key ={i} className="black-text">
-                            <input type="checkbox"/>
-                            <label>{displayedCategory}</label>
-                        </p>
+                        <Link to="/Categories" key ={i} className="black-text">
+                            <FaCutlery className="blue-grey-text lighten-4"/> {'  '}
+                            {displayedCategory} <br />
+                        </Link>
                     )})
             let favoriteList = this.props.favorites.map( (favorite, i )=> {
                 return( 
                         <a key={i} className="black-text" href={favorite.url} target="_blank">
-                            <FaCutlery /> {'  '}
+                            <FaStar className="deep-orange-text darken-3" /> {' '}
                               {favorite.title}<br/>
                         </a>
                     )})
@@ -158,7 +161,7 @@ class MainPage extends React.Component{
                             <div className="col s12 m3">
                                 <div className="card">
                                     <div className="card-content">
-                                        <div className="card-title orange-text darken-3">
+                                        <div className="card-title blue-text darken-3">
                                             Preferences:
                                         </div>
                                         <form>
@@ -175,7 +178,7 @@ class MainPage extends React.Component{
                             <div className="col s12 m3">
                                 <div className="card">
                                     <div className="card-content">
-                                        <div className="card-title orange-text darken-3">
+                                        <div className="card-title blue-text darken-3">
                                             Favorites:
                                         </div>
                                         <form action="#">
