@@ -111,13 +111,13 @@ class MainPage extends React.Component{
                     
             let restaurants = this.state.restaurants.map( restaurant => {
                 return( 
-                    <div key={restaurant.id} className="card large grey lighten-4 hoverable">
+                    <div key={restaurant.id} className="card large hoverable">
                         <div className="card-image">
                             <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://images1.wikia.nocookie.net/__cb20121204182919/yogscast/images/1/19/Unavailable_Pic.gif"} width="20%" height="20%"/>       
                         </div>
                         <div className="card-content">
                             <span className="card-title center-align">
-                                {restaurant.name}
+                                <b>{restaurant.name}</b>
                             </span>
                             <div className="center-align">
                                 {restaurant.rating < 1.9 ? <i className="small orange-text accent-3 material-icons">star</i> : restaurant.rating <= 2.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating <= 3.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating >= 4 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span> : null}
