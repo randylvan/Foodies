@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 const Loader = require('react-loader');
 import {setFavorites} from '../actions/auth';
 import Modal from './Modal';
-
+import FaCutlery from 'react-icons/lib/fa/cutlery';
 
 class MainPage extends React.Component{
     constructor(props){
@@ -93,9 +93,9 @@ class MainPage extends React.Component{
         {
             let modals = this.state.restaurants.map( restaurant => {
                 return( 
-                    <div key={restaurant.id} className="container-fluid">
+                    <div key={restaurant.id} className="container-fluid deep-orange darken-3">
                         <div className="row">
-                            <h4 className="center-align red-text darken-3">{restaurant.name}</h4>
+                            <h4 className="center-align white-text">{restaurant.name}</h4>
                             <h6 className="center-align"><b>{restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zip_code}</b></h6>
                             <div className="modal-actions center-align">
                                 <a href={`https://www.google.com/maps/dir/Current+Location/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
@@ -138,17 +138,17 @@ class MainPage extends React.Component{
             let categoryList = this.props.categories.map( (category, i ) => {
                 let displayedCategory = category.toUpperCase();
                 return( 
-                        <p key ={i}>
+                        <p key ={i} className="black-text">
                             <input type="checkbox"/>
                             <label>{displayedCategory}</label>
                         </p>
                     )})
             let favoriteList = this.props.favorites.map( (favorite, i )=> {
                 return( 
-                        <p key={i}>
-                            <input type="checkbox" checked="checked"/>
-                            <label>{favorite.title}</label>
-                        </p>
+                        <a key={i} className="black-text" href={favorite.url} target="_blank">
+                            <FaCutlery /> {'  '}
+                              {favorite.title}<br/>
+                        </a>
                     )})
 
             return(
@@ -158,7 +158,7 @@ class MainPage extends React.Component{
                             <div className="col s12 m3">
                                 <div className="card">
                                     <div className="card-content">
-                                        <div className="card-title blue-text darken-1">
+                                        <div className="card-title orange-text darken-3">
                                             Preferences:
                                         </div>
                                         <form>
@@ -185,7 +185,7 @@ class MainPage extends React.Component{
                                 </div> 
                             </div>
                     </Loader>
-                        <div id="modal1" className="modal">
+                        <div id="modal1" className="modal deep-orange darken-3">
                             {modals[this.state.number]}
                         </div>
                     </div>
