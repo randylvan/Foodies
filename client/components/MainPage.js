@@ -96,9 +96,9 @@ class MainPage extends React.Component{
         {
             let modals = this.state.restaurants.map( restaurant => {
                 return( 
-                    <div key={restaurant.id} className="container-fluid deep-orange darken-3">
+                    <div key={restaurant.id} className="container-fluid">
                         <div className="row">
-                            <h4 className="center-align white-text">{restaurant.name}</h4>
+                            <h4 className="center-align blue-text darken-3">{restaurant.name}</h4>
                             <h6 className="center-align"><b>{restaurant.location.address1 == null ? '' : restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zipCode}</b></h6>
                             <div className="modal-actions center-align">
                                 <a href={`https://www.google.com/maps/dir/Current+Location/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
@@ -188,7 +188,7 @@ class MainPage extends React.Component{
                                 </div> 
                             </div>
                     </Loader>
-                        <div id="modal1" className="modal deep-orange darken-3">
+                        <div id="modal1" className="modal">
                             {modals[this.state.number]}
                         </div>
                     </div>
