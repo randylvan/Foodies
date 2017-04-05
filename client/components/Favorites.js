@@ -5,7 +5,7 @@ import {goToFavorites} from '../actions/auth';
 
 
 class Favorites extends React.Component {
-    state = {favorites: [], testFavorites: ["jango","ramen","butter"] };
+    state = {favorites: []};
 
     componentDidMount() {
         console.log(this.props.favorites)
@@ -21,18 +21,17 @@ class Favorites extends React.Component {
     }
 
     render() {
-        //this.setState({favorites: this.props.favorites})
         let favoriteList = this.props.favorites.map( (favorite, i) => {
             return(
                 <div key={i}>
-                    <div className="col s12 m4 l4">
-                        <div className="card blue darken-3">
+                    <div className="col s12 m6 l6">
+                        <div className="card hoverable card-small blue darken-3">
                             <div className="card-content">
                             <span className="white-text card-title center">{favorite.title}</span>
                             </div>
-                            <div className="card-action white-text" style={{backgroundColor: '#b3b3b3'}}>
-                                <button className="btn blue darken-4" onClick={() => this.goToFavorite(favorite.url)}>Look</button>
-                                <button className="btn deep-orange darken-3" onClick={() => this.deleteFavorite(favorite.title)}>Delete</button>
+                            <div className="card-action center-align white-text" style={{backgroundColor: '#b3b3b3'}}>
+                                <span><a className="btn-floating black"><i className="material-icons" onClick={() => this.goToFavorite(favorite.url)}>visibility</i></a></span>
+                                <span><a className="btn-floating red darken-3"><i className="material-icons" onClick={() => this.deleteFavorite(favorite.title)}>delete</i></a></span>
                             </div>
                         </div>
                     </div>
