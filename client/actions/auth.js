@@ -44,6 +44,24 @@ export const setFavorites = (id, favorite, link) => {
   }
 }
 
+export const updateUser = (email, firstName, lastName, zipCode, id) => {
+  return (dispatch) => {
+    console.log(id)
+    $.ajax({
+        url: `/api/auth/update/${id}`,
+        type: 'PUT',
+        data: { 
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                zipCode: zipCode
+              }
+    }).done( user => {
+      dispatch({type: 'UPDATE_USER', user})
+    })
+  }
+}
+
 
 
 

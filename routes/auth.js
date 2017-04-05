@@ -132,9 +132,11 @@ router.get('/getCurrUserCats', (req,res) => {
 });
 
 router.put('/update/:id', isAuthenticated, (req, res) => {
+  console.log(req.body.id)
 	let {firstName, lastName, zipCode, email} = req.body;
 	User.findOneAndUpdate({_id: req.params.id}, {username: email, firstName: firstName, lastName: lastName, zipCode: zipCode}, {new: true}, function(err, user){
 		if (err) return res.status(500).json({ message: 'Error updating user!' });
+    console.log(user);
 			return res.json(user);
 	});
 });
