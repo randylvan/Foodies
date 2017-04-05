@@ -7,14 +7,16 @@ class LandingPage extends React.Component {
     render() {    
         return (
     <div>
-
-         <h1 class="header center orange-text">Starter Template</h1>
-        <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+        <div className="row center blue darken-3">
+          <a className="center"><img src="transFoodie.png"/></a>
+          <h5 className="header col s12 white-text">For food explorers like us looking for a new eating adventure</h5>
+          <button className="btn deep-orange blue darken-3">Get Started</button>
         </div>
+        <div className="row center">
+      </div>
+        <div className="row center">
+        </div>
+
 
       </div>
     )

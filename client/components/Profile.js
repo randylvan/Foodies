@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {editUser, setUser} from '../actions/auth';
+import {editUser, setUser, updateUser} from '../actions/auth';
 
 class Profile extends React.Component{
 
@@ -18,6 +18,10 @@ class Profile extends React.Component{
     updateInfo = (e) => {
         e.preventDefault();
         let {firstName, lastName, zipCode, username} = this.refs;
+       // console.log(username.value);
+        //console.log(this.props.user._id)
+       // console.log(this.state._id)
+        this.props.dispatch(updateUser(username.value, firstName.value, lastName.value, zipCode.value, this.props.user._id))
         $.ajax({
             url: `/api/auth/update/${this.props.user._id}`,
             type: 'PUT',
@@ -25,7 +29,7 @@ class Profile extends React.Component{
                     email: username.value,
                     firstName: firstName.value,
                     lastName: lastName.value,
-                    zipCode: zipCode.value
+                    zipCode: zipCode.value  
                   }
         }).done( user => {
             this.setState({ user });
@@ -47,7 +51,7 @@ class Profile extends React.Component{
 
 
     render(){
-        let {firstName, lastName, zipCode, username} = this.state.user;
+        let {firstName, lastName, zipCode, username} = this.props.user;
         if(this.state.edit){
             return(
                 <div className="row">

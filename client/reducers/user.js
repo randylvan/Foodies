@@ -15,6 +15,10 @@ const user = (state = {}, action) => {
       return state;
     case 'ADD_FAVORITE':
       return {...state, favorites: action.favorites};
+    case 'UPDATE_USER':
+      //console.log(action);
+      //console.log(state);
+      return state = action.user;
     default:
       return state;
   }
