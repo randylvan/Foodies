@@ -27,9 +27,9 @@ class SignIn extends React.Component {
     return (
       <div className="container">
         <h2 className="center deep-orange-text darken-4">{this.props.route.title}</h2>
-          <form onSubmit={this.handleSubmit}>
-            <input className="blue-text text-darken-3" type="email" required={true} ref={ n => this.email = n } placeholder="email" />
-            <input className="blue-text text-darken-3" type="password" required={true} ref={n => this.password = n } placeholder="password" />
+          <form onSubmit={this.handleSubmit} className="form-color">
+            <input autoFocus={focus} className="blue-text text-darken-3" type="email" required={true} ref={ n => this.email = n } placeholder="Email" />
+            <input className="blue-text text-darken-3" type="password" required={true} ref={n => this.password = n } placeholder="Password" />
            <button className="btn blue darken-3">Sign In</button>
          </form>
       </div>

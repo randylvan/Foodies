@@ -21,8 +21,8 @@ class LandingPage extends React.Component {
         
         </div>
         <div className="row background-img">
-          <div className="col offset-l1 s12 m6 l6">
-           <h4 className="white-text light"><em>Food is our common ground, a universal experience</em></h4>
+          <div className="col s12 m8 l8">
+           <h4 className="white-text light cool-font"><em>-Food is our common ground,<br/> a universal experience</em></h4>
           </div>
         </div>
         <div className="row deep-orange darken-3 white-text">

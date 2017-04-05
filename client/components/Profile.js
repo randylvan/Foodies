@@ -58,24 +58,24 @@ class Profile extends React.Component{
                     <form className="col s12">
                         <div className="row">
                             <h5 className="blue-text text-darken-3">Email</h5>
-                            <input className="blue-text text-darken-3" defaultValue={username} ref="username" onChange={this.handleFormChange} />
+                            <input autoFocus={focus} defaultValue={username} ref="username" onChange={this.handleFormChange} />
                         </div>
                         <div className="row">
                             <h5 className="blue-text text-darken-3">First Name</h5>
-                            <input className="blue-text text-darken-3" defaultValue={firstName} ref="firstName" onChange={this.handleFormChange} />
+                            <input defaultValue={firstName} ref="firstName" onChange={this.handleFormChange} />
                         </div>
                         <div className="row">
                             <h5 className="blue-text text-darken-3">last Name</h5>
-                            <input className="blue-text text-darken-3" defaultValue={lastName} ref="lastName"onChange={this.handleFormChange} />
+                            <input defaultValue={lastName} ref="lastName"onChange={this.handleFormChange} />
                         </div>
                         <div className="row">
                             <h5 className="blue-text text-darken-3">Zip Code</h5>
-                            <input className="blue-text text-darken-3" defaultValue={zipCode} ref="zipCode" onChange={this.handleFormChange} />
-                            <button className="btn deep-orange darken-3" onClick={this.resetInfo}>Cancel</button>
-                            <button className="btn blue darken-4" onClick={this.updateInfo}>Submit</button>
+                            <input defaultValue={zipCode} ref="zipCode" onChange={this.handleFormChange} />
+                            <button className="btn left deep-orange darken-3" onClick={this.resetInfo}>Cancel</button>
+                            <button className="btn right blue darken-4" onClick={this.updateInfo}>Submit</button>
                         </div>
                     </form>
-                </div>
+                </div>  
 
             )
         }else{
@@ -83,16 +83,16 @@ class Profile extends React.Component{
                 <div>
                     <div className="row">
                         <div className="col s12 m10 l10">
-                            <h5 className="blue-text text-darken-3">Email: {username}</h5>
+                            <h5 className="blue-text text-darken-3">Email: <span className="black-text">{username}</span></h5>
                         </div>
                         <div className="col s12 m10 l10">
-                            <h5 className="blue-text text-darken-3">First Name: {firstName}</h5>
+                            <h5 className="blue-text text-darken-3">First Name: <span className="black-text">{firstName}</span></h5>
                         </div>
                         <div className="col s12 m12 l12">
-                            <h5 className="blue-text text-darken-3">Last Name: {lastName}</h5>
+                            <h5 className="blue-text text-darken-3">Last Name: <span className="black-text">{lastName}</span></h5>
                         </div>
                         <div className="col s12 m12 l12">
-                            <h5 className="blue-text text-darken-3">Zip Code: {zipCode}</h5>
+                            <h5 className="blue-text text-darken-3">Zip Code: <span className="black-text">{zipCode}</span></h5>
                         </div>
                     </div>
                     <button className="btn blue darken-3" onClick={this.toggleEdit}>Edit</button>

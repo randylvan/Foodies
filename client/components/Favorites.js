@@ -24,14 +24,14 @@ class Favorites extends React.Component {
         let favoriteList = this.props.favorites.map( (favorite, i) => {
             return(
                 <div key={i}>
-                    <div className="col s12 m6 l6">
+                    <div className="col s12 m6 l6 ">
                         <div className="card hoverable card-small blue darken-3">
                             <div className="card-content">
-                            <span className="white-text card-title center">{favorite.title}</span>
+                            <span className="white-text card-title center card-font">{favorite.title}</span>
                             </div>
                             <div className="card-action center-align white-text" style={{backgroundColor: '#b3b3b3'}}>
-                                <span><a className="btn-floating black"><i className="material-icons" onClick={() => this.goToFavorite(favorite.url)}>visibility</i></a></span>
-                                <span><a className="btn-floating red darken-3"><i className="material-icons" onClick={() => this.deleteFavorite(favorite.title)}>delete</i></a></span>
+                                <span className="left"><a className="btn-floating white"><i className="material-icons black-text" onClick={() => this.goToFavorite(favorite.url)}>visibility</i></a></span>
+                                <span className="right"><a className="btn-floating deep-orange darken-3"><i className="material-icons" onClick={() => this.deleteFavorite(favorite.title)}>delete</i></a></span>
                             </div>
                         </div>
                     </div>

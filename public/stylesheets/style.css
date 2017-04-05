@@ -89,6 +89,30 @@ i {
 
 }
 
+.cool-font{
+  font-family: Courier New, Courier, monospace;
+  font-size: 2.875em;
+  margin-top: 200px;
+  margin-left: 0px;
+}
+
+.profile-image{
+  height: auto;
+  width: 300px;
+
+}
+
+about-me {
+  margin:50px;
+  padding:50px;
+}
+.card-font{
+  font-size: 100px;
+}
+.form-color{
+  background-color: #f1f8e0;
+}
+
 /*.card {
   height: auto;
 }
