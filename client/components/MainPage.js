@@ -113,7 +113,7 @@ class MainPage extends React.Component{
                 return( 
                     <div key={restaurant.id} className="card large hoverable">
                         <div className="card-image">
-                            <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "http://images1.wikia.nocookie.net/__cb20121204182919/yogscast/images/1/19/Unavailable_Pic.gif"} width="20%" height="20%"/>       
+                            <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "i.imgur.com/X7ndLwL.png"} width="20%" height="20%"/>       
                         </div>
                         <div className="card-content">
                             <span className="card-title center-align">
