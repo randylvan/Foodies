@@ -14,6 +14,7 @@ class MainPage extends React.Component{
     }
 
     componentDidMount() {
+        $('.tooltipped').tooltip();
         $('#modal1').modal();
         let {categories, zipCode} = this.props;
         let category = this.randomCategory(categories);
@@ -102,7 +103,8 @@ class MainPage extends React.Component{
                             <h6 className="center-align"><b>{restaurant.location.address1 == null ? '' : restaurant.location.address1}, {restaurant.location.city} {restaurant.location.zipCode}</b></h6>
                             <div className="modal-actions center-align">
                                 <a href={`https://www.google.com/maps/dir/Current+Location/${restaurant.location.address1}+${restaurant.location.city}+${restaurant.location.zip_code}`} target="_blank"><i className="medium material-icons black-text">location_on</i></a>
-                                <a href={`tel:${restaurant.display_phone}`}><i className="medium material-icons black-text">call</i></a>
+                                <a href={`tel:${restaurant.display_phone}`}><i className="medium material-icons black-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">call</i></a>
+                                <a href={restaurant.url} target="_blank"><i className="medium material-icons black-text">info</i></a>
                             </div>
                             
                         </div>
@@ -113,7 +115,7 @@ class MainPage extends React.Component{
                 return( 
                     <div key={restaurant.id} className="card large hoverable">
                         <div className="card-image">
-                            <img className="responsive" src={restaurant.image_url ? restaurant.image_url : "i.imgur.com/X7ndLwL.png"} width="20%" height="20%"/>       
+                            <img className="" src={restaurant.image_url ? restaurant.image_url : "http://i.imgur.com/X7ndLwL.png"}/>       
                         </div>
                         <div className="card-content">
                             <span className="card-title center-align">
