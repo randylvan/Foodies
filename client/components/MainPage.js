@@ -30,7 +30,6 @@ class MainPage extends React.Component{
             this.setState({ loaded: !this.state.loaded});   
             let number = Math.floor(Math.random()* this.state.restaurants.length);
             this.setState({ number: number});
-
         }).fail( err => {
             alert(JSON.stringify(err));
         });
@@ -115,7 +114,7 @@ class MainPage extends React.Component{
                 return( 
                     <div key={restaurant.id} className="card large hoverable">
                         <div className="card-image">
-                            <img className="" src={restaurant.image_url ? restaurant.image_url : "http://i.imgur.com/X7ndLwL.png"}/>       
+                            <img src={restaurant.image_url ? restaurant.image_url : "http://i.imgur.com/X7ndLwL.png"}/>       
                         </div>
                         <div className="card-content">
                             <span className="card-title center-align">
@@ -125,6 +124,7 @@ class MainPage extends React.Component{
                                 {restaurant.rating < 1.9 ? <i className="small orange-text accent-3 material-icons">star</i> : restaurant.rating <= 2.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating <= 3.9 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span>: restaurant.rating >= 4 ? <span><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i><i className="small orange-text accent-3 material-icons">star</i></span> : null}
                                 <br/><b>{ `${restaurant.categories[0].title}`}</b><br/>
                                 {`${restaurant.location.address1 ? restaurant.location.address1 : null}, ${restaurant.location.city}` }
+                             
                             </div>
                         </div>
                         <div className="card-action center-align" style={styles}>          
