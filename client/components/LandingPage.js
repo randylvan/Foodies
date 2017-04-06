@@ -30,7 +30,7 @@ class LandingPage extends React.Component {
             <div className="icon-block">
               <h2 className="center white-text"><i className="large material-icons">thumb_up</i></h2>
               <h5 className="center">Enjoy Delectable Goodies</h5>
-              <p className="light">Have you ever had a moment when you were comtemplating for hours on what to have for dinner? Well with our application, you will never run into that problem again. Our application autoMAGICALLY picks a restaurant for you depending on your preferences. Now you can just focus more satisfying your tastebuds instead of picking between Italian or Chinese.x`</p>
+              <p className="light">Have you ever had a moment when you were comtemplating for hours on what to have for dinner? Well with our application, you will never run into that problem again. Our application autoMAGICALLY picks a restaurant for you depending on your preferences. Now you can just focus more satisfying your tastebuds instead of picking between Italian or Chinese.</p>
             </div>
           </div>
 
