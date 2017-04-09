@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 
 class LandingPage extends React.Component { 
@@ -15,7 +15,7 @@ class LandingPage extends React.Component {
               <h5 className="header col s12 white-text">For food explorers like us looking for a new eating adventure</h5>
           </div>
           <div className="col s12 m12 l12">
-              <button className="btn deep-orange darken-3 center">Get Started</button>
+              <button className="btn deep-orange darken-3 center" onClick={()=> browserHistory.push('/signin')}>Get Started</button>
               <p></p>
           </div>
         
