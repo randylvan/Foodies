@@ -9,9 +9,6 @@
     "heroku-postbuild": "yarn build",
     "seed": "node ./models/seed.js"
   },
-  "engines": {
-   "node": "6.11.1"
-  }
   "dependencies": {
     "autoprefixer": "^6.7.6",
     "babel-core": "^6.23.1",
